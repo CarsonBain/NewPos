@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-interactions',
@@ -10,19 +9,19 @@ import { FormsModule } from '@angular/forms';
 export class InteractionsComponent {
   public currentTable;
   public currentSeat;
-  public currentProduct;
+  public currentItem;
   public products = [
     {
       name: 'Caeser Salad',
       price: 7.99,
       GST: 1.00,
-      posCategory: 'Food'
+      posCategory: 'Food',
     },
     {
       name: 'Green Salad',
       price: 7.99,
       GST: 1.00,
-      posCategory: 'Food'
+      posCategory: 'Food',
     }
   ]
   public seat1 = [
@@ -30,13 +29,15 @@ export class InteractionsComponent {
       name: 'Chicken Burger',
       price: 15.99,
       GST: 1.00,
-      posCategory: 'Food'
+      posCategory: 'Food',
+      sent: true
     },
     {
       name: 'Lager',
       price: 7.99,
       GST: .50,
-      posCategory: 'Drink'
+      posCategory: 'Drink',
+      sent: true
     }
   ]
   public seat2 = [
@@ -44,11 +45,13 @@ export class InteractionsComponent {
       name: 'Pesto Salad',
       price: 16.99,
       GST: 1.50,
-      posCategory: 'Food'
+      posCategory: 'Food',
+      sent: true
     }
   ]
 
   public table1 = [this.seat1, this.seat2]
+  public tables = [this.table1]
 
 
   constructor() {
@@ -56,13 +59,36 @@ export class InteractionsComponent {
 
   public addItem(product): void{
     // Move Logic elsewhere to dropdown
-    this.currentTable = this.table1;
-    this.currentSeat = this.seat1;
+    // this.currentTable = this.table1;
+    // this.currentSeat = this.seat1;
 
-    this.currentSeat.push(product);
+    if(this.currentSeat){
+      product.GUID = this.newGUID();
+      this.currentSeat.push(product);
+    }
   }
 
-  public setCurrentItem(product): void{
-    this.currentProduct = product;
+  public setCurrentItem(product, seat): void{
+    this.currentSeat = seat;
+    // set the current seat to the seat with this product
+    this.currentItem = product;
+  };
+
+  public setCurrentTable(table): void{
+    this.currentTable = table;
+  };
+
+  public setCurrentSeat(seat): void{
+    this.currentSeat = seat;
+  }
+
+  public removeProduct(): void {
+  }
+
+  public newGUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }
