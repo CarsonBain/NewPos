@@ -1,0 +1,24 @@
+<div class="h-100 w-100 d-flex justify-content-center align-items-center bg-black">
+  <div class="pin-wrap d-flex flex-wrap justify-content-center">
+    <p class="mb-4 text-white">Enter your PIN</p>
+  <div class="text-white counter d-flex justify-content-center w-100 mb-4">
+      <div class="rounded-circle mx-2" [ngClass]="pinCode.length >= 1 ? 'filled' : 'empty'"></div>
+      <div class="rounded-circle mx-2" [ngClass]="pinCode.length >= 2 ? 'filled' : 'empty'"></div>
+      <div class="rounded-circle mx-2" [ngClass]="pinCode.length >= 3 ? 'filled' : 'empty'"></div>
+      <div class="rounded-circle mx-2" [ngClass]="pinCode.length >= 4 ? 'filled' : 'empty'"></div>
+  </div>
+  <div class="d-flex justify-content-center flex-wrap text-white">
+
+    <button (click)="addPin(1)" class="rounded-circle bg-dark">1</button>
+    <button (click)="addPin(2)" class="rounded-circle bg-dark">2</button>
+    <button (click)="addPin(3)" class="rounded-circle bg-dark">3</button>
+    <button (click)="addPin(4)" class="rounded-circle bg-dark">4</button>
+    <button (click)="addPin(5)" class="rounded-circle bg-dark">5</button>
+    <button (click)="addPin(6)" class="rounded-circle bg-dark">6</button>
+    <button (click)="addPin(7)" class="rounded-circle bg-dark">7</button>
+    <button (click)="addPin(8)" class="rounded-circle bg-dark">8</button>
+    <button (click)="addPin(9)" class="rounded-circle bg-dark">9</button>
+    <button (click)="addPin(0)" class="rounded-circle bg-dark">0</button>
+  </div>
+  </div>
+  </div>

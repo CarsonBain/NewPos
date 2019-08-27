@@ -1,0 +1,88 @@
+@mixin font-body {
+  font-size: 15.5px;
+  line-height: 22px;
+}
+
+@mixin font-small {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+@mixin text-stroke($fill-color, $stroke-color, $stroke-width) {
+  color: $fill-color;
+  text-shadow: -$stroke-width -$stroke-width 0 $stroke-color, $stroke-width -$stroke-width 0 $stroke-color,
+    -$stroke-width $stroke-width 0 $stroke-color, $stroke-width $stroke-width 0 $stroke-color;
+
+  @supports ((-webkit-text-stroke-color: $stroke-color) and (-webkit-text-fill-color: white)) or
+    ((-moz-text-stroke-color: $stroke-color) and (-moz-text-fill-color: white)) {
+    color: unset;
+    text-shadow: unset;
+    -moz-text-fill-color: $fill-color;
+    -webkit-text-fill-color: $fill-color;
+    -moz-text-stroke-color: $stroke-color;
+    -webkit-text-stroke-color: $stroke-color;
+    -moz-text-stroke-width: $stroke-width;
+    -webkit-text-stroke-width: $stroke-width;
+  }
+}
+
+@mixin cubic-bezier {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@mixin modal-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 1px 14px 0 rgba($midnight-light, 0.3);
+  background-color: $white;
+}
+
+@mixin modal-header-footer {
+  background-color: $white;
+  box-shadow: 0 0 15px 0 rgba($midnight, 0.1);
+  border: none;
+}
+
+@mixin modal-header {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+@mixin modal-footer {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+@mixin no-outline {
+  &:hover,
+  &:active,
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
+}
+
+@mixin input-group {
+  border: 1px solid $silver-dark;
+  box-shadow: inset 0 -1px 1px 0 $silver-light;
+  border-radius: 4px;
+  transition: all 0.25s ease-in-out;
+}
+
+@mixin icon-defaults {
+  display: inline-block;
+  @include font-body();
+  line-height: 1;
+}
+
+@mixin icon-before-styles {
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'wdi-icons' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

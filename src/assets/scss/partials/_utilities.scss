@@ -1,0 +1,62 @@
+// Miscellaneous
+.clickable {
+  cursor: pointer;
+}
+
+.grab {
+  cursor: grab;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.hide-when-empty {
+  &:empty {
+    display: none;
+  }
+}
+
+.text-break-all {
+  word-break: break-all;
+}
+
+.no-outline {
+  @include no-outline();
+}
+
+// Layout
+
+.d-grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+.grid-auto-rows {
+  -ms-grid-rows: 1fr;
+  grid-auto-rows: 1fr;
+}
+
+.grid-columns-4 {
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.table-layout-fixed {
+  table-layout: fixed;
+}
+
+.full-height {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}

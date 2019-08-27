@@ -1,0 +1,59 @@
+.table-listing {
+  // This is needed so that our dropdown components (three dot menu icons) can fully display
+  // when opened within the table listing
+  @include media-breakpoint-up(md) {
+    overflow: initial;
+  }
+
+  thead {
+    background: $white;
+    color: $grey;
+    border-bottom: 1px solid $silver-light;
+
+    th {
+      border: none;
+      font-weight: normal;
+
+      &.sortable {
+        cursor: pointer;
+      }
+    }
+  }
+
+  tbody {
+    color: $grey;
+
+    tr {
+      &:hover {
+        background: $off-white;
+      }
+    }
+
+    td {
+      vertical-align: middle;
+      border-top: none;
+      border-bottom: 1px solid $silver-light;
+    }
+  }
+
+  tr,
+  td,
+  th {
+    &:focus,
+    &:active {
+      outline: 0 !important;
+    }
+  }
+}
+
+.table-filters {
+  clear: both;
+  margin-top: 15px;
+  height: 55px;
+}
+
+.action-item {
+  .icon-edit {
+    font-size: 20px;
+  }
+}

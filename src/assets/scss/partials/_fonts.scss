@@ -1,0 +1,132 @@
+@import 'colors';
+
+h1,
+.h1 {
+  font-size: 48px;
+  line-height: 56px;
+  color: $grey;
+  font-weight: normal;
+}
+
+h2,
+.h2 {
+  font-size: 34px;
+  line-height: 40px;
+  color: $grey;
+  font-weight: normal;
+}
+
+h3,
+.h3 {
+  font-size: 24px;
+  line-height: 32px;
+  color: $grey;
+  font-weight: normal;
+}
+
+h4,
+.h4 {
+  font-size: 20px;
+  line-height: 24px;
+  color: $grey;
+  font-weight: normal;
+}
+
+h5,
+.h5 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: normal;
+  color: $grey;
+}
+
+h6,
+.h6 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  color: $grey-lightest;
+}
+
+p {
+  @include font-body();
+  color: $grey;
+}
+
+a,
+a:not([href]):not([tabindex]) {
+  color: $pink;
+
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+a.resource-doc-link {
+  text-decoration: underline;
+}
+
+a.grey,
+a:not([href]):not([tabindex]).grey {
+  color: $grey;
+}
+
+.grey-link {
+  color: $grey-lightest;
+  text-decoration: underline;
+
+  &:hover {
+    color: $grey-lightest;
+    text-decoration: none;
+  }
+}
+
+.small-text {
+  @include font-small();
+}
+
+small {
+  @include font-small();
+  color: $grey-lightest;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: $grey;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  @include font-body();
+  color: $silver-darker;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  @include font-body();
+  color: $silver-darker;
+}
+
+::-ms-input-placeholder {
+  @include font-body();
+  color: $silver-darker;
+}
+
+::placeholder {
+  @include font-body();
+  color: $silver-darker;
+}
+
+.input-group-text {
+  @include font-body();
+  color: $grey-lighter;
+  background-color: #fff;
+}
+
+.inline-error {
+  @include font-small();
+  color: $red-dark;
+}

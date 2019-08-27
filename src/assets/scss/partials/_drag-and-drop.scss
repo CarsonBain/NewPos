@@ -1,0 +1,31 @@
+tr.cdk-drag-preview {
+  width: 1000px;
+  height: 48px;
+  display: table;
+  vertical-align: inherit;
+  border-color: inherit;
+  border-collapse: collapse;
+  vertical-align: middle;
+  background: $white;
+}
+
+tbody.cdk-drop-list-dragging tr:not(.cdk-drag-placeholder) {
+  cursor: grabbing !important;
+}
+
+.cdk-drag-preview {
+  z-index: $above-modal-index !important;
+  td {
+    padding: 0.75rem !important;
+  }
+}
+
+.cdk-drag-animating {
+  @include cubic-bezier();
+}
+
+tbody.cdk-drop-list-dragging tr:not(.cdk-drag-placeholder),
+div.cdk-drop-list-dragging div:not(.cdk-drag-placeholder) {
+  cursor: grabbing !important;
+  @include cubic-bezier();
+}

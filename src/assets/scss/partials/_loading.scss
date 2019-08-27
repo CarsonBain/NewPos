@@ -1,0 +1,78 @@
+@import 'colors';
+
+.page-spinner.loading-spinner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  border: 2px solid $grey-lightest;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+  width: 30px - (2px * 2);
+  height: 30px - (2px * 2);
+  opacity: .5;
+
+  animation: loading-spinner .6s infinite linear;
+  -webkit-animation: loading-spinner .6s infinite linear;
+
+  &.dark {
+    border: 2px solid $grey;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    opacity: 1;
+  }
+}
+
+button .loading-spinner {
+  position: absolute;
+  top: 31%;
+  left: 41%;
+  margin: 0;
+  border: 2px solid $white;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+  width: 20px - (2px * 2);
+  height: 20px - (2px * 2);
+  opacity: .5;
+  animation: loading-spinner .4s infinite linear;
+  -webkit-animation: loading-spinner .4s infinite linear;
+}
+
+.loading-spinner {
+  border-radius: 50%;
+}
+
+.loading-spinner.dark {
+  border: 2px solid $black;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+}
+
+.loading-spinner.dark.small {
+  left: 28%;
+}
+
+@keyframes loading-spinner {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+@-webkit-keyframes loading-spinner {
+  from {
+    -webkit-transform: rotate(0deg)
+  }
+
+  to {
+    -webkit-transform: rotate(360deg)
+  }
+}

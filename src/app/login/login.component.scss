@@ -1,0 +1,36 @@
+@import 'component-includes';
+
+.bg-black {
+  background-color: black;
+}
+
+.pin-wrap {
+  width: 285px;
+}
+
+.counter {
+
+  .rounded-circle {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 1px solid white;
+
+    &.filled {
+      background-color: $pink;
+    }
+  }
+
+
+}
+
+button.rounded-circle {
+  width: 72px;
+  height: 72px;
+  font-size: 36px;
+  margin: 8px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+
+}

@@ -1,0 +1,11 @@
+// FIXME: Update this package with new defaults
+// @import '~wdi-assets/scss/helpers/variables';
+
+@mixin accent-gradient {
+  background: $sky;
+  background: -webkit-gradient(linear, right top, left top, from($sky), to($blue));
+  background: linear-gradient(to left, $sky, $blue);
+}
+
+//z-index
+$above-modal-index: 1051; //Bootstrap Overlay For Modals is 1050

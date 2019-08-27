@@ -1,0 +1,99 @@
+@import 'colors';
+
+.large {
+  .modal-dialog {
+    @include media-breakpoint-up(lg) {
+      margin: 7% auto;
+      max-width: 700px;
+    }
+  }
+
+  .modal-wrapper {
+    .modal-body {
+      max-height: 500px;
+      min-height: 500px;
+      overflow-y: auto;
+    }
+  }
+}
+
+.short {
+  .modal-dialog {
+    @include media-breakpoint-up(lg) {
+      margin: 7% auto;
+      max-width: 700px;
+    }
+  }
+
+  .modal-wrapper {
+    .modal-body {
+      max-height: 500px;
+      min-height: 200px;
+      overflow-y: auto;
+    }
+  }
+}
+
+.skinny {
+  .modal-dialog {
+    @include media-breakpoint-up(lg) {
+      margin: 7% auto;
+      max-width: 392px;
+      min-height: 500px;
+    }
+
+    .modal-wrapper {
+      height: 460px;
+    }
+
+    .modal-content {
+      border: none;
+      border-radius: 20px;
+    }
+  }
+}
+
+.large-round {
+  .modal-dialog {
+    @include media-breakpoint-up(lg) {
+      margin: 7% auto;
+      max-width: 700px;
+    }
+
+    .modal-wrapper {
+      min-height: 600px;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      border: none;
+      border-radius: 20px;
+    }
+  }
+}
+
+.small {
+  .modal-dialog {
+    @include media-breakpoint-up(lg) {
+      margin: 10% auto;
+      max-width: 500px;
+    }
+  }
+
+  .modal-wrapper {
+    .modal-body {
+      min-height: 160px;
+    }
+  }
+}
+
+.modal-backdrop {
+  color: white;
+  background: $midnight;
+  transition: all 0.25s ease;
+}
+
+.modal {
+  transition: transform 0.25s linear;
+  transform: translateY(4px);
+}
