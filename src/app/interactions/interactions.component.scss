@@ -36,3 +36,12 @@
   color: black
 }
 
+.add-table-modal {
+  background-color: lightblue;
+  border-radius: 15px;
+
+  & input {
+    outline: none;
+  }
+}
+
