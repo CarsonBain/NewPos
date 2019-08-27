@@ -31,5 +31,14 @@
   <button class="product" (click)="addItem(product)">{{product.name}}</button>
 </div>
 
-<button class="product" (click)="removeProduct()"></button>
+<!-- <button (click)="removeProduct()"></button> -->
+
+
+<button *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
+
+<div *ngIf="displayAddTableModal" class="w-50 p-2 d-flex justify-content-center add-table-modal">
+  <label class="m-2">Table Name</label>
+  <input class='rounded-pill px-3'>
+</div>
+
 
