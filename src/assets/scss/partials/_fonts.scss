@@ -48,6 +48,10 @@ h6,
   color: $grey-lightest;
 }
 
+.secondary-font {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 p {
   @include font-body();
   color: $grey;
