@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from '../models/table/table.model'
 import { ActivatedRoute } from '@angular/router';
 import { TablesService } from 'src/app/tables.service';
+import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-interactions',
@@ -10,11 +11,26 @@ import { TablesService } from 'src/app/tables.service';
 })
 
 export class InteractionsComponent implements OnInit{
-  public currentTable;
+  @ViewChild('newTableNumber') tableNumberField: ElementRef;
+
+  get newTableNumber(): FormControl {
+    return this.form.get('newTableNumber') as FormControl;
+  }
+
+  get newTableSeats(): FormControl {
+    return this.form.get('newTableSeats') as FormControl;
+  }
+
+  public openTable: Table;
+  public openTableSeats;
+  public openSeatItems;
   public currentSeat;
   public currentItem;
+  public form: FormGroup;
+  public currentServer = 1;
   public displayAddTableModal = false;
   public tableSelected = true;
+  public tableNumberError = false;
   public products = [
     {
       name: 'Caeser Salad',
@@ -63,10 +79,18 @@ export class InteractionsComponent implements OnInit{
   public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
-  constructor(private route: ActivatedRoute, public tableService: TablesService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    public tableService: TablesService,
+    private formBuilder: FormBuilder
+    ) {}
 
   ngOnInit() {
+    this.buildForm();
+    // this.getTablesForServer();
+  }
+
+  private getTablesForServer(): void {
     const activatedServerId = +this.route.snapshot.paramMap.get('id');
     this.tableService.getServerTables(activatedServerId).forEach(table => {
       this.serverTables.push(table);
@@ -77,24 +101,23 @@ export class InteractionsComponent implements OnInit{
 
   public addItem(product): void {
     // Move Logic elsewhere to dropdown
-    // this.currentTable = this.table1;
+    // this.openTable = this.table1;
     // this.currentSeat = this.seat1;
 
-    if(this.currentSeat){
+    if (this.currentSeat) {
       // product.GUID = this.newGUID();
-      // console.log(product);
       this.currentSeat.push(product);
     }
   }
 
   public setCurrentItem(product, seat): void{
     this.currentSeat = seat;
-    // set the current seat to the seat with this product
     this.currentItem = product;
   };
 
-  public setCurrentTable(table): void{
-    this.currentTable = table;
+  public setOpenTable(table): void{
+    this.openTable = table;
+    this.openTableSeats = this.openTable.seats;
   };
 
   public setCurrentSeat(seat): void{
@@ -112,26 +135,62 @@ export class InteractionsComponent implements OnInit{
   // }
 
 
-  public buildTable(tableName): Table {
-    // const formModel = this.form.value;
+  public buildTable(tableOptions): Table {
     const table = {
-      id: tableName,
-      name: tableName,
-      seats: [],
-      createdAt: new Date(),
+      number: tableOptions.number,
+      serverId: this.currentServer,
+      seats: tableOptions.seats,
       billPrinted: false,
+      createdAt: new Date().toLocaleTimeString(),
+      lastItemOrdered: new Date().toLocaleTimeString(),
     };
 
     return table;
   }
 
-  public addTable(newTableName): void{
-    // if (this.tables.indexOf(tableName) === -1){
-    //   const tableName = this.buildTable(newTableName);
-    //   this.tables.push(tableName);
-    // } else {
-    //   console.log('sorry theres already a table with that name')
-    // }
+  public buildTableOptions(): any{
+    const seats = [];
+
+    for (let i = 0; i < this.newTableSeats.value; i++){
+      seats.push(i);
+    }
+    const tableOptions = {
+      number: this.newTableNumber.value,
+      seats
+    };
+
+    return tableOptions;
+  }
+
+  public submitTableForm(): void{
+    const tableOptions = this.buildTableOptions();
+
+    const tableFound = this.serverTables.filter(table => {
+      return table.number === this.newTableNumber.value;
+    });
+
+    if (tableFound.length === 0){
+      const newTable = this.buildTable(tableOptions);
+      this.serverTables.push(newTable);
+
+      // Make this validation better
+      this.tableNumberError = false;
+      this.form.controls.newTableNumber.setValue('');
+      this.toggleAddTableModal();
+      //
+
+      this.setOpenTable(newTable);
+    } else {
+      this.tableNumberError = true;
+      this.form.controls.newTableNumber.setValue('');
+    }
+  }
+
+  private buildForm(): void {
+    this.form = this.formBuilder.group({
+      newTableNumber: '',
+      newTableSeats: ''
+    });
   }
 
   public toggleAddTableModal(): void{

@@ -9,7 +9,7 @@ export class TablesService {
 
 public tables = [
   {
-    name: '100',
+    number: 100,
     serverId: 1,
     seats: [
       {
@@ -36,7 +36,7 @@ public tables = [
     lastItemOrdered: new Date().toLocaleTimeString()
   },
   {
-    name: '101',
+    number: 101,
     serverId: 1,
     seats: [
       {
@@ -63,7 +63,7 @@ public tables = [
     lastItemOrdered: new Date().toLocaleTimeString()
   },
   {
-    name: '102',
+    number: 102,
     serverId: 2,
     seats: [
       {
