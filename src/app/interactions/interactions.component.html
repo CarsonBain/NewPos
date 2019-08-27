@@ -1,12 +1,23 @@
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-table-0">
-    <ngb-panel *ngFor="let table of tables; let i = index" id="ngb-panel-table-{{i}}">
+<div class="interactions-wrap">
+<ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+    <ngb-panel *ngFor="let table of serverTables; let i = index" id="ngb-panel-table-{{i}}">
         <ng-template ngbPanelTitle>
-          <div class="d-flex list-table">
-              Table {{ i + 1 }}
+          <div class="d-flex list-table align-items-center flex-wrap">
+            <div class="d-flex w-100 justify-content-between">
+              <p>Table {{table.name}}</p>
+              <p class="small-text">Created {{table.createdAt}}</p>
+            </div>
+            <div class="d-flex w-100">
+              <div class="indicators d-flex align-items-center">
+                <svg id="Bold" xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" viewBox="0 0 24 24"><title>table-restaurant</title><path d="M8.5,13.75a2,2,0,0,0-2-2H3.2a.249.249,0,0,1-.249-.237c-.033-.633-.086-1.264-.175-1.889L1.99,4.108a1,1,0,0,0-1.98.283L.8,9.906a21.268,21.268,0,0,1-.317,7.568L.024,19.533a1,1,0,0,0,.759,1.193A1.018,1.018,0,0,0,1,20.75a1,1,0,0,0,.975-.783l.458-2.06a23.7,23.7,0,0,0,.527-3.92.25.25,0,0,1,.25-.237H6.25A.25.25,0,0,1,6.5,14v5.75a1,1,0,0,0,2,0Z"/><path d="M14.5,19.75a1,1,0,0,0-1-1,.5.5,0,0,1-.5-.5v-7.5a.5.5,0,0,1,.5-.5H18a1,1,0,0,0,0-2H6a1,1,0,0,0,0,2h4.5a.5.5,0,0,1,.5.5v7.5a.5.5,0,0,1-.5.5,1,1,0,0,0,0,2h3A1,1,0,0,0,14.5,19.75Z"/><path d="M23.519,17.474A21.254,21.254,0,0,1,23.2,9.907l.788-5.515a1,1,0,1,0-1.98-.283l-.788,5.515c-.089.625-.142,1.257-.175,1.89a.248.248,0,0,1-.249.236H17.5a2,2,0,0,0-2,2v6a1,1,0,0,0,2,0V14a.25.25,0,0,1,.25-.25h3.039a.249.249,0,0,1,.249.237,23.83,23.83,0,0,0,.528,3.921l.458,2.059A1,1,0,0,0,23,20.75a1.084,1.084,0,0,0,.218-.023,1,1,0,0,0,.759-1.193Z"/></svg>
+                <div class="ml-2 seats rounded-circle secondary-font">{{table.seats.length}}</div>
+                <div class="countdown"></div>
+                </div>
+              </div>
           </div>
         </ng-template>
         <ng-template ngbPanelContent>
-          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-seat-0">
+          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
                 <ngb-panel *ngFor="let seat of table; let i = index" id="ngb-panel-seat-{{i}}">
                   <ng-template ngbPanelTitle>
                     <div [ngClass]="seat === currentSeat ? 'activeSeat' : 'seat'" class="seat" (click)="setCurrentSeat(seat)">
@@ -27,18 +38,22 @@
     </ngb-panel>
 </ngb-accordion>
 
+
 <div *ngFor="let product of products">
-  <button class="product" (click)="addItem(product)">{{product.name}}</button>
+  <button class="product btn" (click)="addItem(product)">{{product.name}}</button>
 </div>
 
 <!-- <button (click)="removeProduct()"></button> -->
 
+<div class="interactions-footer d-flex flex-column">
+<button class="btn" *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
 
-<button *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
-
-<div *ngIf="displayAddTableModal" class="w-50 p-2 d-flex justify-content-center add-table-modal">
-  <label class="m-2">Table Name</label>
-  <input class='rounded-pill px-3'>
 </div>
+<div *ngIf="displayAddTableModal" class="p-2 d-flex justify-content-center add-table-modal mt-auto">
+    <label class="m-2">Table Name</label>
+    <input class='rounded-pill px-3'>
+  </div>
+</div>
+
 
 

@@ -232,3 +232,20 @@ ngb-datepicker {
   // content was displayed
   top: 0;
 }
+
+.interactions-wrap {
+  .accordion {
+    .card-header {
+      button {
+        width: calc(100% - 60px);
+        height: 100px;
+        background-color: white;
+
+        &.btn-link:hover {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

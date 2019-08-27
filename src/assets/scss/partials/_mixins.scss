@@ -6,6 +6,7 @@
 @mixin font-small {
   font-size: 13px;
   line-height: 20px;
+  color: #8d8d8d;
 }
 
 @mixin text-stroke($fill-color, $stroke-color, $stroke-width) {

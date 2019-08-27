@@ -71,7 +71,7 @@ export class InteractionsComponent implements OnInit{
     this.tableService.getServerTables(activatedServerId).forEach(table => {
       this.serverTables.push(table);
     });
-    console.log(this.serverTables);
+    console.log('Server Tables', this.serverTables);
 
   }
 
