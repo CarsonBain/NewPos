@@ -37,7 +37,7 @@
           <ngb-accordion class="sub-interactions" #acc="ngbAccordion" [closeOthers]="true">
                 <ngb-panel *ngFor="let seat of openTableSeats; let i = index" id="ngb-panel-seat-{{i}}">
                   <ng-template ngbPanelTitle>
-                    <div [ngClass]="seat === currentSeat ? 'activeSeat' : 'seat'" class="seat d-flex justify-content-between" (click)="setCurrentSeat(seat)">
+                    <div [ngClass]="seat === openSeat ? 'activeSeat' : 'seat'" class="seat d-flex justify-content-between" (click)="setOpenSeat(seat)">
                       <span>View Table Summary</span>
                       <div class="d-flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="white" id="Bold" height="24px" width="24px" viewBox="0 0 24 24"><title>chair</title><path d="M18.521,10.775a.255.255,0,0,1-.021-.1V1a1,1,0,0,0-2,0v.5A.5.5,0,0,1,16,2H8a.5.5,0,0,1-.5-.5V1a1,1,0,0,0-2,0v9.673a.255.255,0,0,1-.021.1C5.24,11.311,3.5,15.228,3.5,15.5v1A.5.5,0,0,0,4,17H20a.5.5,0,0,0,.5-.5v-1C20.5,15.228,18.76,11.311,18.521,10.775ZM16.5,10a.5.5,0,0,1-.5.5H8a.5.5,0,0,1-.5-.5V7A.5.5,0,0,1,8,6.5h8a.5.5,0,0,1,.5.5Z"/><path d="M5.5,19a.5.5,0,0,0-.5-.5H4a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0Z"/><path d="M20,18.5H19a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0V19A.5.5,0,0,0,20,18.5Z"/></svg>
@@ -58,11 +58,6 @@
         </ng-template>
     </ngb-panel>
 </ngb-accordion>
-
-
-<div *ngFor="let product of products">
-  <button class="product btn" (click)="addItem(product)">{{product.name}}</button>
-</div>
 
 <!-- <button (click)="removeProduct()"></button> -->
 
