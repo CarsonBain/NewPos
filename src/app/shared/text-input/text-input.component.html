@@ -1,0 +1,75 @@
+<div>
+  <div class="w-100 d-flex justify-content-between">
+    <label
+      class="mb-1 position-relative hide-when-empty"
+      [ngClass]="{ 'is-required': appearRequired }"
+      [for]="identifier"
+    >
+      <ng-content></ng-content>
+    </label>
+    <ng-content select="[labelEnd]"></ng-content>
+  </div>
+  <div class="d-flex flex-row align-items-center">
+    <ng-content select="[leftInputContent]"></ng-content>
+    <div class="input-group" [ngClass]="{ 'is-focused': focused, 'is-invalid': invalid, 'is-disabled': disabled }">
+      <div class="d-flex hide-when-empty" #prepend>
+        <ng-content select="[prepend]"></ng-content>
+      </div>
+      <input
+        *ngIf="!typeahead"
+        #text
+        [type]="inputType"
+        data-lpignore="true"
+        class="form-control"
+        [ngClass]="{
+          'py-2 pr-2 pl-0': prependEnabled,
+          'py-2 pl-2 pr-0': suffixEnabled,
+          'p-2': !prependEnabled && !suffixEnabled
+        }"
+        [(ngModel)]="value"
+        [id]="identifier"
+        [placeholder]="placeholder"
+        [attr.aria-label]="identifier"
+        (focus)="onFocus($event)"
+        (click)="onClick($event)"
+        (focusout)="onBlur()"
+      />
+      <input
+        *ngIf="typeahead"
+        #text
+        [type]="inputType"
+        data-lpignore="true"
+        class="form-control"
+        [ngClass]="{
+          'py-2 pr-2 pl-0': prependEnabled,
+          'py-2 pl-2 pr-0': suffixEnabled,
+          'p-2': !prependEnabled && !suffixEnabled
+        }"
+        [ngbTypeahead]="search"
+        [resultFormatter]="searchResultFormatter"
+        [inputFormatter]="searchInputFormatter"
+        (selectItem)="selectedItem($event)"
+        #typeaheadInstance="ngbTypeahead"
+        [(ngModel)]="value"
+        [id]="identifier"
+        [placeholder]="placeholder"
+        [attr.aria-label]="identifier"
+        (focus)="onFocus($event)"
+        (click)="onClick($event)"
+        (keyup.enter)="onEnter($event)"
+        (focusout)="onBlur()"
+        [attr.aria-multiline]="false"
+      />
+      <div class="d-flex hide-when-empty" #suffix>
+        <ng-content select="[suffix]"></ng-content>
+      </div>
+    </div>
+    <ng-content select="[rightInputContent]"></ng-content>
+  </div>
+</div>
+<div *ngIf="invalid" class="invalid-feedback hide-when-empty mt-2">
+  <ng-content select="[error]"></ng-content>
+</div>
+<small id="{{ identifier }}HintBlock" class="form-text text-muted hide-when-empty mt-2">
+  <ng-content select="[hint]"></ng-content>
+</small>

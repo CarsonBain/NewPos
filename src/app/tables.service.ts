@@ -9,7 +9,7 @@ export class TablesService {
 
 public tables = [
   {
-    name: '100',
+    number: 100,
     serverId: 1,
     seats: [],
     billPrinted: false,
@@ -17,7 +17,7 @@ public tables = [
     lastItemOrdered: Date.now()
   },
   {
-    name: '101',
+    number: 101,
     serverId: 1,
     seats: [],
     billPrinted: false,
@@ -25,7 +25,7 @@ public tables = [
     lastItemOrdered: Date.now()
   },
   {
-    name: '102',
+    number: 102,
     serverId: 2,
     seats: [],
     billPrinted: false,

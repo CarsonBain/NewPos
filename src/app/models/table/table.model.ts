@@ -1,10 +1,11 @@
 
 export class Table {
-  name: string;
+  number: number;
+  serverId: number;
   seats: Array<any>;
-  id: string;
-  createdAt: Date;
   billPrinted: boolean;
+  createdAt: Date;
+  lastItemOrdered: Date;
 
   constructor(args: Table) {
     // super();

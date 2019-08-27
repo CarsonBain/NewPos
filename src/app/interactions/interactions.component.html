@@ -1,26 +1,26 @@
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-table-0">
-    <ngb-panel *ngFor="let table of tables; let i = index" id="ngb-panel-table-{{i}}">
+    <ngb-panel *ngFor="let table of serverTables; let i = index" id="ngb-panel-table-{{i}}">
         <ng-template ngbPanelTitle>
-          <div class="d-flex list-table">
-              Table {{ i + 1 }}
+          <div (click)="setOpenTable(table)" class="d-flex list-table">
+              Table {{ table.number }}
           </div>
         </ng-template>
-        <ng-template ngbPanelContent>
+        <ng-template *ngIf="openTableSeats" ngbPanelContent>
           <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-seat-0">
-                <ngb-panel *ngFor="let seat of table; let i = index" id="ngb-panel-seat-{{i}}">
+                <ngb-panel *ngFor="let seat of openTableSeats; let i = index" id="ngb-panel-seat-{{i}}">
                   <ng-template ngbPanelTitle>
                     <div [ngClass]="seat === currentSeat ? 'activeSeat' : 'seat'" class="seat" (click)="setCurrentSeat(seat)">
                       <span>Seat {{ i + 1 }}</span>
                     </div>
                   </ng-template>
-                  <ng-template ngbPanelContent>
+                  <!-- <ng-template *ngIf="openSeatItems" ngbPanelContent>
                     <div [ngClass]="item === currentItem ? 'activeItem' : 'item'" class="item d-flex justify-content-between" *ngFor="let item of seat" (click)="setCurrentItem(item, seat)">
                         <div>
                             <span> {{ item.name }} </span>
                             <span> {{ item.price }} </span>
                         </div>
                     </div>
-                  </ng-template>
+                  </ng-template> -->
                 </ngb-panel>
           </ngb-accordion>
         </ng-template>
@@ -37,8 +37,16 @@
 <button *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
 
 <div *ngIf="displayAddTableModal" class="w-50 p-2 d-flex justify-content-center add-table-modal">
-  <label class="m-2">Table Name</label>
-  <input class='rounded-pill px-3'>
+  <form [formGroup]="form">
+    <div>
+      <label class="m-2">Table Number</label>
+      <input formControlName="newTableNumber" type="number" class='rounded-pill px-3'>
+      <label class="m-2">Seats</label>
+      <input formControlName="newTableSeats" type="number" class=''>
+    </div>
+    <button (click)="submitTableForm()">Submit</button>
+  </form>
+  <span *ngIf="tableNumberError">That table already exists!</span>
 </div>
 
 
