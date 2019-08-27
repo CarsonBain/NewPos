@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TablesService } from 'src/app/tables.service';
 
 @Component({
   selector: 'app-interactions',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./interactions.component.scss']
 })
 
-export class InteractionsComponent {
+export class InteractionsComponent implements OnInit{
   public currentTable;
   public currentSeat;
   public currentItem;
@@ -23,7 +25,7 @@ export class InteractionsComponent {
       GST: 1.00,
       posCategory: 'Food',
     }
-  ]
+  ];
   public seat1 = [
     {
       name: 'Chicken Burger',
@@ -39,7 +41,7 @@ export class InteractionsComponent {
       posCategory: 'Drink',
       sent: true
     }
-  ]
+  ];
   public seat2 = [
     {
       name: 'Pesto Salad',
@@ -50,14 +52,24 @@ export class InteractionsComponent {
     }
   ]
 
-  public table1 = [this.seat1, this.seat2]
-  public tables = [this.table1]
+  public table1 = [this.seat1, this.seat2];
+  public tables = [this.table1];
+  public serverTables = [];
 
 
-  constructor() {
+  constructor(private route: ActivatedRoute, public tableService: TablesService) {
   }
 
-  public addItem(product): void{
+  ngOnInit() {
+    const activatedServerId = +this.route.snapshot.paramMap.get('id');
+    this.tableService.getServerTables(activatedServerId).forEach(table => {
+      this.serverTables.push(table);
+    });
+    console.log(this.serverTables);
+
+  }
+
+  public addItem(product): void {
     // Move Logic elsewhere to dropdown
     // this.currentTable = this.table1;
     // this.currentSeat = this.seat1;
