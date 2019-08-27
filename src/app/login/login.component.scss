@@ -4,6 +4,21 @@
   background-color: black;
 }
 
+.error {
+  .rounded-circle {
+    background-color: #f76e6e;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.placeholder {
+  .rounded-circle {
+    width: 52px;
+    height: 52px;
+  }
+}
+
 .pin-wrap {
   width: 285px;
 }
@@ -11,26 +26,49 @@
 .counter {
 
   .rounded-circle {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     background-color: transparent;
     border: 1px solid white;
 
     &.filled {
       background-color: $pink;
+      border: none;
     }
-  }
 
+  }
 
 }
 
 button.rounded-circle {
-  width: 72px;
-  height: 72px;
-  font-size: 36px;
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  font-weight: 300;
+  font-size: 40px;
   margin: 8px;
   background-color: transparent;
   border: 1px solid white;
   color: white;
+
+  &.center {
+    grid-column-start: 2;
+    grid-row-start: 4;
+  }
+
+  &.backspace {
+  border: none;
+  grid-column-start: 3;
+  grid-row-start: 4;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
 }
