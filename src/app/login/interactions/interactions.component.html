@@ -1,17 +1,24 @@
 <div>
-  <span *ngFor="let seat of table1; let i = index">
-    <div>Seat {{ i + 1 }}</div>
-    <div class="item d-flex justify-content-between w-25" *ngFor="let item of seat" (click)="setCurrentItem(item)">
-      <span>
-        {{ item.name }}
-      </span>
-      <span>
-        {{ item.price }}
-      </span>
+  <div *ngFor="let table of tables; let i = index" click="setCurrentTable(table)">
+    <span class="d-flex w-25 list-table"> Table {{ i + 1 }}</span>
+    <div *ngFor="let seat of table; let i = index">
+      <div [ngClass]="seat === currentSeat ? 'activeSeat' : 'seat'" class="seat w-25" (click)="setCurrentSeat(seat)">
+        <span>Seat {{ i + 1 }}</span>
+      </div>
+      <div [ngClass]="item === currentItem ? 'activeItem' : 'item'" class="item d-flex justify-content-between w-25" *ngFor="let item of seat" (click)="setCurrentItem(item, seat)">
+        <div>
+          <span> {{ item.name }} </span>
+          <span> {{ item.price }} </span>
+        </div>
+      </div>
     </div>
-  </span>
+  </div>
 </div>
 
 <div *ngFor="let product of products">
   <button class="product" (click)="addItem(product)">{{product.name}}</button>
 </div>
+
+<button class="product" (click)="removeProduct()"></button>
+
+
