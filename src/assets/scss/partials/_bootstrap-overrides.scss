@@ -233,19 +233,54 @@ ngb-datepicker {
   top: 0;
 }
 
+.btn-link {
+  text-decoration: none !important;
+  color: #000;
+}
+
 .interactions-wrap {
-  .accordion {
+    .card {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
+    }
     .card-header {
+      background-color: white;
+      position: relative;
+
       button {
-        width: calc(100% - 60px);
         height: 100px;
-        background-color: white;
+
+        &[aria-expanded="true"] {
+          .seat-count {
+            color: $pink;
+            background-color: rgba(172, 86, 179, 0.24);
+          }
+          .table-icon {
+            fill: $pink;
+          }
+        }
 
         &.btn-link:hover {
-          color: inherit;
-          text-decoration: none;
+          text-decoration: none !important;
+        }
+
+        &:after {
+          content: '',
+
         }
       }
+    }
+}
+
+.sub-interactions {
+  .card-header {
+    button.btn-link {
+      height: 54px;
+      color: white;
+      font-size: 15px;
+      background-color: $blue;
+      border-radius: 0;
+      width: 100%;
+
     }
   }
 }

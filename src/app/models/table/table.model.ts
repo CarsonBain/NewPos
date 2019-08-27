@@ -4,8 +4,8 @@ export class Table {
   serverId: number;
   seats: Array<any>;
   billPrinted: boolean;
-  createdAt: Date;
-  lastItemOrdered: Date;
+  createdAt: string;
+  lastItemOrdered: string;
 
   constructor(args: Table) {
     // super();
