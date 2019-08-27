@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from '../models/table/table.model'
+import { Seat } from '../models/seat/seat.model'
 import { ActivatedRoute } from '@angular/router';
 import { TablesService } from 'src/app/tables.service';
 import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
@@ -22,9 +23,9 @@ export class InteractionsComponent implements OnInit{
   }
 
   public openTable: Table;
-  public openTableSeats;
+  public openTableSeats: Seat[] = [];
   public openSeatItems;
-  public currentSeat;
+  public openSeat: Seat;
   public currentItem;
   public form: FormGroup;
   public currentServer = 1;
@@ -47,8 +48,8 @@ export class InteractionsComponent implements OnInit{
       GUID: ''
     }
   ];
-  public seat1 = [
-    {
+  public seat1 = {
+    items : [{
       name: 'Chicken Burger',
       price: 15.99,
       GST: 1.00,
@@ -63,18 +64,18 @@ export class InteractionsComponent implements OnInit{
       posCategory: 'Drink',
       sent: true,
       GUID: '2341'
-    }
-  ];
-  public seat2 = [
-    {
+    }]
+  };
+  public seat2 = {
+    items : [{
       name: 'Pesto Salad',
       price: 16.99,
       GST: 1.50,
       posCategory: 'Food',
       sent: true,
       GUID: '3412'
-    }
-  ];
+    }]
+  };
 
   public table1 = [this.seat1, this.seat2];
   public serverTables = [];
@@ -82,11 +83,13 @@ export class InteractionsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     public tableService: TablesService,
+    // public productService: ProductService,
     private formBuilder: FormBuilder
     ) {}
 
   ngOnInit() {
     this.buildForm();
+    // this.getProducts();
     // this.getTablesForServer();
   }
 
@@ -100,16 +103,17 @@ export class InteractionsComponent implements OnInit{
   public addItem(product): void {
     // Move Logic elsewhere to dropdown
     // this.openTable = this.table1;
-    // this.currentSeat = this.seat1;
+    // this.openSeat = this.seat1;
 
-    if (this.currentSeat) {
+    if (this.openSeat) {
       // product.GUID = this.newGUID();
-      this.currentSeat.push(product);
+      // this.openSeat.push(product);
+      // this.openSeat.items.push(product);
     }
   }
 
   public setCurrentItem(product, seat): void{
-    this.currentSeat = seat;
+    this.openSeat = seat;
     this.currentItem = product;
   };
 
@@ -118,8 +122,11 @@ export class InteractionsComponent implements OnInit{
     this.openTableSeats = this.openTable.seats;
   };
 
-  public setCurrentSeat(seat): void{
-    this.currentSeat = seat;
+  public setOpenSeat(seat): void{
+    this.openSeat = seat;
+    this.openSeatItems = this.openSeat.items;
+    console.log(this.openSeat)
+    console.log(this.openTableSeats)
   }
 
   public removeProduct(): void {
@@ -150,7 +157,11 @@ export class InteractionsComponent implements OnInit{
     const seats = [];
 
     for (let i = 0; i < this.newTableSeats.value; i++){
-      seats.push(i);
+      const seat = {
+        number: i + 1,
+        items: []
+      };
+      seats.push(seat);
     }
     const tableOptions = {
       number: this.newTableNumber.value,
