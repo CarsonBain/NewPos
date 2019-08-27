@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Table } from '../models/table/table.model'
+import { ActivatedRoute } from '@angular/router';
+import { TablesService } from 'src/app/tables.service';
 
 @Component({
   selector: 'app-interactions',
@@ -7,7 +9,7 @@ import { Table } from '../models/table/table.model'
   styleUrls: ['./interactions.component.scss']
 })
 
-export class InteractionsComponent {
+export class InteractionsComponent implements OnInit{
   public currentTable;
   public currentSeat;
   public currentItem;
@@ -58,13 +60,22 @@ export class InteractionsComponent {
     }
   ];
 
-  public table1 = [this.seat1, this.seat2]
-  public tables = [];
+  public table1 = [this.seat1, this.seat2];
+  public serverTables = [];
 
-  constructor() {
+  constructor(private route: ActivatedRoute, public tableService: TablesService) {
   }
 
-  public addItem(product): void{
+  ngOnInit() {
+    const activatedServerId = +this.route.snapshot.paramMap.get('id');
+    this.tableService.getServerTables(activatedServerId).forEach(table => {
+      this.serverTables.push(table);
+    });
+    console.log(this.serverTables);
+
+  }
+
+  public addItem(product): void {
     // Move Logic elsewhere to dropdown
     // this.currentTable = this.table1;
     // this.currentSeat = this.seat1;

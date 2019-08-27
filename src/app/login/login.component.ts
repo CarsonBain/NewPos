@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/menu', server.id]);
     } else {
       this.error = true;
+      this.pinCode = [];
     }
 
   }
