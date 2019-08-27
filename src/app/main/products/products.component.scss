@@ -1,0 +1,12 @@
+.products-container{
+  height: 100%;
+  width: 75;
+  display: flex;
+  justify-content: flex-end;
+
+  .product {
+    padding: 1em;
+    width: 100px;
+    height: 70px;
+  }
+}
