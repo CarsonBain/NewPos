@@ -11,7 +11,7 @@ public tables = [
   {
     name: '100',
     serverId: 1,
-    seats: 4,
+    seats: [],
     billPrinted: false,
     createdAt: Date.now(),
     lastItemOrdered: Date.now()
@@ -19,7 +19,7 @@ public tables = [
   {
     name: '101',
     serverId: 1,
-    seats: 4,
+    seats: [],
     billPrinted: false,
     createdAt: Date.now(),
     lastItemOrdered: Date.now()
@@ -27,7 +27,7 @@ public tables = [
   {
     name: '102',
     serverId: 2,
-    seats: 4,
+    seats: [],
     billPrinted: false,
     createdAt: Date.now(),
     lastItemOrdered: Date.now()
