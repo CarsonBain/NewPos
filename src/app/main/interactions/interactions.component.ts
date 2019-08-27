@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Table } from '../models/table/table.model'
-import { Seat } from '../models/seat/seat.model'
+import { Table } from '../../models/table/table.model'
+import { Seat } from '../../models/seat/seat.model'
 import { ActivatedRoute } from '@angular/router';
 import { TablesService } from 'src/app/tables.service';
 import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
@@ -120,6 +120,7 @@ export class InteractionsComponent implements OnInit{
   public setOpenTable(table): void{
     this.openTable = table;
     this.openTableSeats = this.openTable.seats;
+    // close other tables
   };
 
   public setOpenSeat(seat): void{
@@ -127,6 +128,7 @@ export class InteractionsComponent implements OnInit{
     this.openSeatItems = this.openSeat.items;
     console.log(this.openSeat)
     console.log(this.openTableSeats)
+    // don't close other seats
   }
 
   public removeProduct(): void {
