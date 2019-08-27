@@ -1,0 +1,17 @@
+<div>
+  <span *ngFor="let seat of table1; let i = index">
+    <div>Seat {{ i + 1 }}</div>
+    <div class="item d-flex justify-content-between w-25" *ngFor="let item of seat" (click)="setCurrentItem(item)">
+      <span>
+        {{ item.name }}
+      </span>
+      <span>
+        {{ item.price }}
+      </span>
+    </div>
+  </span>
+</div>
+
+<div *ngFor="let product of products">
+  <button class="product" (click)="addItem(product)">{{product.name}}</button>
+</div>
