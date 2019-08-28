@@ -9,13 +9,13 @@ import { Product } from '../../models/product/product.model';
 
 export class MainComponent {
   public products = [];
-  public selectedProduct: Product;
+  public selectedProducts: Product[];
 
   constructor(
   ) {}
 
-  public handleAddProduct(product: Product): void {
-    this.selectedProduct = product;
+  public handleAddProduct(products: Product[]): void {
+    this.selectedProducts = products;
   }
 }
 

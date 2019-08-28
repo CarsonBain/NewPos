@@ -1,9 +1,10 @@
 
 <div class="products-container d-flex justify-content-end">
   <div *ngFor="let product of products">
-    <button (click)="addProduct(product)" class="m-1 d-flex product">
+    <button (click)="addProduct(product)" [ngClass]="{'selected-product': product.selected}" class="m-1 d-flex product">
       <span>{{product.name}}</span>
       <span class="p-1">{{product.price}}</span>
+      <span class="item-count" *ngIf="product.quantity > 1">{{product.quantity}}</span>
     </button>
   </div>
 </div>

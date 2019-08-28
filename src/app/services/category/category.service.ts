@@ -9,7 +9,7 @@ export class CategoryService {
 
   public categories = [
     {
-      name: 'Popular Items'
+      name: 'Happy Hour'
     },
     {
       name: 'Food'

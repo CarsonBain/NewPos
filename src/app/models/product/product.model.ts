@@ -5,6 +5,9 @@ export class Product {
   GST: number;
   posCategory: string;
   GUID: string;
+  sku: string;
+  selected: boolean;
+  quantity: number;
 
   constructor(args: Product) {
     Object.assign(this, args);

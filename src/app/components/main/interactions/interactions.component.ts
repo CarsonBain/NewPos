@@ -90,20 +90,20 @@ export class InteractionsComponent implements OnInit {
   }
 
   // TODO: Find some way of adding two in a row
-  @Input() set productAdd(product: Product) {
-    if (this.openSeat) {
-      product.GUID = this.newGUID();
-      this.openSeat.items.push(product);
-      const prices = this.openSeat.items.map(item => {
-        return item.price;
-      });
-      this.openSeat.subtotal = prices.reduce((acc, curr): number => {
-        return this.openSeat.subtotal = acc + curr;
-      });
-    }
-    this.getTableItemQuantity();
-    this.getTableSubTotal();
-  }
+  // @Input() set productAdd(products: Product[]) {
+  //   if (this.openSeat) {
+  //     product.GUID = this.newGUID();
+  //     this.openSeat.items.push(product);
+  //     const prices = this.openSeat.items.map(item => {
+  //       return item.price;
+  //     });
+  //     this.openSeat.subtotal = prices.reduce((acc, curr): number => {
+  //       return this.openSeat.subtotal = acc + curr;
+  //     });
+  //   }
+  //   this.getTableItemQuantity();
+  //   this.getTableSubTotal();
+  // }
 
   // public addItem(product): void {
   //   // Move Logic elsewhere to dropdown
@@ -132,7 +132,6 @@ export class InteractionsComponent implements OnInit {
   public setOpenSeat(seat: Seat): void{
     this.openSeat = seat;
     this.openSeatItems = this.openSeat.items;
-    console.log(this.openSeatItems);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.
   }

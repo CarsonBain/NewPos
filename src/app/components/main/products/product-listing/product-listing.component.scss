@@ -12,5 +12,17 @@
     &:focus{
       outline: none;
     }
+    
+    &.selected-product {
+      background-color: pink;
+    }
+  }
+  
+  .item-count{
+    border-radius: 1em;
+    background-color: lightblue;
+    height: 20px;
+    width: 36px;
+    font-size: 12px;
   }
 }

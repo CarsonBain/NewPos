@@ -1,2 +1,3 @@
     <app-category-nav (action)="filterProducts($event)"></app-category-nav>
+    <app-product-search (productFound)="filterProducts($event)"></app-product-search>
     <app-products-listing (addProductAction)="addProduct($event)" [products]="products"></app-products-listing>
