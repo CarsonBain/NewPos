@@ -13,7 +13,7 @@ import { NgbTypeahead, NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-boot
 import { of } from 'rxjs';
 
 @Component({
-  selector: 'app-text-input',
+  selector: "app-text-input",
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.scss'],
   providers: [

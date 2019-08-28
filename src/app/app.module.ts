@@ -11,6 +11,7 @@ import { CategoryNavComponent } from './components/main/products/category-nav/ca
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
 import { ProductsComponent } from './components/main/products/products.component';
+import { TextInputComponent } from './shared/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductsComponent } from './components/main/products/products.component
     ProductsListingComponent,
     ProductsComponent,
     CategoryNavComponent,
-    MainComponent
+    MainComponent,
+    TextInputComponent
   ],
   imports: [
     NgbModule,
