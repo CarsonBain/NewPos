@@ -33,7 +33,7 @@
                       </g>
                       </svg>
                     <div class="ml-2 product-count font-small">({{table.totalItems}} items)</div>
-                    <div class="ml-2 subtotal">${{table.subtotal}}</div>
+                    <div class="ml-2 subtotal">{{table.subtotal | currency}}</div>
                     </div>
               </div>
               <div class="arrow-down">
@@ -60,7 +60,7 @@
                         <div class="name">
                           Guest
                         </div>
-                         <span class="item-count">({{seat.items.length}} items)</span><span class="ml-1 items-price">${{seat.subtotal}} </span>
+                         <span class="item-count">({{seat.items.length}} items)</span><span class="ml-1 items-price">{{seat.subtotal | currency}} </span>
                       </div>
                       <svg xmlns="http://www.w3.org/2000/svg" class="chevron" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                     </div>

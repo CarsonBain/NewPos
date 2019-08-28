@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import { Product } from 'src/app/models/product/product.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Validators } from '@angular/forms';
+import { SeatService } from 'src/app/services/seat/seat.service';
 
 @Component({
   selector: 'app-interactions',
@@ -37,41 +38,13 @@ export class InteractionsComponent implements OnInit {
   public formSubmitted = false;
   public displayErrors = false;
 
-  public seat1 = {
-    items : [{
-      name: 'Chicken Burger',
-      price: 15.99,
-      GST: 1.00,
-      posCategory: 'Food',
-      sent: true,
-      GUID: '1234'
-    },
-    {
-      name: 'Lager',
-      price: 7.99,
-      GST: .50,
-      posCategory: 'Drink',
-      sent: true,
-      GUID: '2341'
-    }]
-  };
-  public seat2 = {
-    items : [{
-      name: 'Pesto Salad',
-      price: 16.99,
-      GST: 1.50,
-      posCategory: 'Food',
-      sent: true,
-      GUID: '3412'
-    }]
-  };
-
-  public table1 = [this.seat1, this.seat2];
+  // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
   constructor(
     private route: ActivatedRoute,
     public tableService: TablesService,
+    public seatService: SeatService,
     // public productService: ProductService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal
@@ -90,32 +63,13 @@ export class InteractionsComponent implements OnInit {
   }
 
   // TODO: Find some way of adding two in a row
-  // @Input() set productAdd(products: Product[]) {
-  //   if (this.openSeat) {
-  //     product.GUID = this.newGUID();
-  //     this.openSeat.items.push(product);
-  //     const prices = this.openSeat.items.map(item => {
-  //       return item.price;
-  //     });
-  //     this.openSeat.subtotal = prices.reduce((acc, curr): number => {
-  //       return this.openSeat.subtotal = acc + curr;
-  //     });
-  //   }
-  //   this.getTableItemQuantity();
-  //   this.getTableSubTotal();
-  // }
-
-  // public addItem(product): void {
-  //   // Move Logic elsewhere to dropdown
-  //   // this.openTable = this.table1;
-  //   // this.openSeat = this.seat1;
-
-  //   if (this.openSeat) {
-  //     // product.GUID = this.newGUID();
-  //     // this.openSeat.push(product);
-  //     // this.openSeat.items.push(product);
-  //   }
-  // }
+  @Input() set productAdd(product: Product) {
+    if (this.openSeat) {
+      this.seatService.addItemToSeat(this.openSeat, product);
+      this.tableService.getTableItemQuantity(this.openTable);
+      this.tableService.getTableSubTotal(this.openTable);
+    }
+  }
 
   public setCurrentItem(product: Product, seat: Seat): void{
     this.openSeat = seat;
@@ -158,7 +112,8 @@ export class InteractionsComponent implements OnInit {
       billPrinted: false,
       createdAt: new Date().toLocaleTimeString(),
       lastItemOrdered: new Date().toLocaleTimeString(),
-      totalItems: 0
+      totalItems: 0,
+      subtotal: 0
     };
 
     return table;
@@ -219,32 +174,7 @@ export class InteractionsComponent implements OnInit {
   }
 
   public addSeat(table: Table): void {
-    const lastSeat = table.seats.slice(-1)[0].number;
-    table.seats.push({number: lastSeat, items: [], subtotal: 0});
-  }
-
-  public getTableItemQuantity(): void {
-    if (this.serverTables.length) {
-    this.serverTables.forEach(table => {
-      const totalItems = [];
-      table.seats.forEach(seat => {
-        totalItems.push(seat.items.length);
-      });
-      table.totalItems = totalItems.reduce((a, b) => a + b);
-    });
-  }
-  }
-
-  public getTableSubTotal(): void {
-    if (this.serverTables.length) {
-    this.serverTables.forEach(table => {
-      const subTotals = [];
-      table.seats.forEach(seat => {
-        subTotals.push(seat.subtotal);
-      });
-      table.subtotal = subTotals.reduce((a, b) => a + b);
-    });
-  }
+    this.seatService.addSeat(table);
   }
 
   private buildForm(): void {

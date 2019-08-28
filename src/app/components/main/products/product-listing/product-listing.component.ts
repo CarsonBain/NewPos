@@ -9,7 +9,7 @@ import { Product } from 'src/app/models/product/product.model';
 })
 
 export class ProductsListingComponent {
-  @Output() addProductAction = new EventEmitter<Product[]>();
+  @Output() addProductAction = new EventEmitter<Product>();
   @Input() products: Product[] = [];
   public selectedItems = [];
 
@@ -18,14 +18,15 @@ export class ProductsListingComponent {
   ) {}
 
   public addProduct(product: Product): void {
-    if (this.selectedItems.indexOf(product) === -1){
-      product.selected = true;
-      product.quantity = 1;
-      this.selectedItems.push(product);
-    } else {
-      product.quantity ++;
-    }
-    this.addProductAction.emit(this.selectedItems);
+    // if (this.selectedItems.indexOf(product) === -1){
+    //   product.selected = true;
+    //   product.quantity = 1;
+    //   this.selectedItems.push(product);
+    // } else {
+    //   product.quantity ++;
+    // }
+    
+    this.addProductAction.emit(product);
   }
 }
 

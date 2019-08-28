@@ -4,6 +4,7 @@ export class Seat {
   number: number;
   items: Product[];
   subtotal?: number;
+  tableNumber: number;
 
   constructor(args: Seat) {
     Object.assign(this, args);
