@@ -1,7 +1,8 @@
+import { Product } from '../product/product.model';
 
 export class Seat {
   number: number;
-  items: [];
+  items: Product[];
 
   constructor(args: Seat) {
     // super();

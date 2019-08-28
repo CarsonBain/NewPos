@@ -1,6 +1,9 @@
 
 <div class="products-container">
   <div *ngFor="let product of products">
-    <button (click)="addProduct(product)" class="m-1 product">{{product.name}}</button>
+    <button (click)="addProduct(product)" class="m-1 product">
+      <span>{{product.name}}</span>
+      <span class="p-1">{{product.price}}</span>
+    </button>
   </div>
 </div>

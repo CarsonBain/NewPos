@@ -1,3 +1,2 @@
-<app-interactions></app-interactions>
-<app-products></app-products>
-
+<app-interactions [productAdd]="selectedProduct"></app-interactions>
+<app-products (action)="onAction($event)"></app-products>

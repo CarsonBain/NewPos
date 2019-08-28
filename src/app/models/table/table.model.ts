@@ -1,8 +1,9 @@
+import { Seat } from '../seat/seat.model';
 
 export class Table {
   number: number;
   serverId: number;
-  seats: Array<any>;
+  seats: Seat[];
   billPrinted: boolean;
   createdAt: string;
   lastItemOrdered: string;
