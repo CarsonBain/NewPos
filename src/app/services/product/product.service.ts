@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Category } from 'src/app/models/category/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,10 +43,25 @@ export class ProductService {
       GST: 1.00,
       posCategory: 'Food',
       GUID: ''
+    },
+    {
+      name: 'Red Wine',
+      price: 7.99,
+      GST: 1.00,
+      posCategory: 'Wine',
+      GUID: ''
     }
   ];
 
-  public getProducts(): any {
-    return this.products;
+  public getAll(category?: Category): any {
+    if (category) {
+      const filteredResults = [];
+      this.products.forEach(product => {
+        if (product.posCategory === category.name) {
+          filteredResults.push(product);
+        }
+      });
+      return filteredResults;
+    }
   }
 }

@@ -9,19 +9,14 @@ import { Category } from 'src/app/models/category/category.model';
   styleUrls: ['./products.component.scss']
 })
 
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
   public products = [];
   @Output() action = new EventEmitter<Product>();
 
-  constructor(
-    public productService: ProductService
-  ) {}
+  constructor(public productService: ProductService) {}
 
-  public ngOnInit(): void {
-  }
-
-  public onAction(): void {
-    console.log('hit');
+  public filterProducts(category: Category): void {
+    this.products = this.productService.getAll(category);
   }
 }
 

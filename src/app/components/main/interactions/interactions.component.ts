@@ -12,7 +12,7 @@ import { Product } from 'src/app/models/product/product.model';
   styleUrls: ['./interactions.component.scss']
 })
 
-export class InteractionsComponent implements OnInit{
+export class InteractionsComponent implements OnInit {
   @ViewChild('newTableNumber') tableNumberField: ElementRef;
 
   get newTableNumber(): FormControl {
@@ -87,7 +87,6 @@ export class InteractionsComponent implements OnInit{
   }
 
   @Input() set productAdd(product: Product) {
-    console.log('hi')
     if (this.openSeat) {
       this.openSeat.items.push(product);
     }
@@ -99,26 +98,25 @@ export class InteractionsComponent implements OnInit{
     // this.openSeat = this.seat1;
 
     if (this.openSeat) {
-      console.log('hi')
       // product.GUID = this.newGUID();
       // this.openSeat.push(product);
       // this.openSeat.items.push(product);
     }
   }
 
-  public setCurrentItem(product, seat): void{
+  public setCurrentItem(product: Product, seat: Seat): void{
     // console.log(product, seat)
     this.openSeat = seat;
     this.selectedItem = product;
-  };
+  }
 
-  public setOpenTable(table): void{
+  public setOpenTable(table: Table): void{
     this.openTable = table;
     this.openTableSeats = this.openTable.seats;
     // close other tables
-  };
+  }
 
-  public setOpenSeat(seat): void{
+  public setOpenSeat(seat: Seat): void{
     this.openSeat = seat;
     this.openSeatItems = this.openSeat.items;
     console.log(this.openSeatItems);
@@ -150,8 +148,7 @@ export class InteractionsComponent implements OnInit{
   }
 
   public onAction(): void {
-    console.log('hi')
-  };
+  }
 
   public buildTableOptions(): any{
     const seats = [];

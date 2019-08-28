@@ -1,4 +1,4 @@
-import { OnInit, EventEmitter, Output, Component } from '@angular/core';
+import { OnInit, EventEmitter, Output, Component, Input } from '@angular/core';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/product/product.model';
 
@@ -8,21 +8,16 @@ import { Product } from 'src/app/models/product/product.model';
   styleUrls: ['./product-listing.component.scss']
 })
 
-export class ProductsListingComponent implements OnInit {
-  public products = [];
-  @Output() product = new EventEmitter<Product>();
+export class ProductsListingComponent {
+  @Output() addProductAction = new EventEmitter<Product>();
+  @Input() products: Product[] = [];
 
   constructor(
     public productService: ProductService,
   ) {}
 
-  public ngOnInit(): void {
-    this.products = this.productService.getProducts();
-  }
-
   public addProduct(product: Product): void {
-    console.log(product)
-    this.product.emit(product);
+    this.addProductAction.emit(product);
   }
 }
 

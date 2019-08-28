@@ -12,7 +12,6 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
 import { ProductsComponent } from './components/main/products/products.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

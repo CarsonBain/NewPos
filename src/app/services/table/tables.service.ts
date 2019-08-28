@@ -82,13 +82,11 @@ public tables = [
   },
 ];
 
-public getServerTables(serverId: number) {
-  const serverTables = this.tables.filter(table => {
-    return table.serverId === serverId;
-  });
+  public getServerTables(serverId: number) {
+    const serverTables = this.tables.filter(table => {
+      return table.serverId === serverId;
+    });
 
-  console.log(serverTables);
-
-  return serverTables;
-}
+    return serverTables;
+  }
 }
