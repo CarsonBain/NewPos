@@ -1,5 +1,4 @@
 
-  
 .category-tab{
   height: 60px;
   cursor: pointer;
@@ -7,4 +6,8 @@
 
 .category-nav-container {
   height: 38px;
+}
+
+.activeCategory {
+  background-color: skyblue;
 }

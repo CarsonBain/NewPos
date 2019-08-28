@@ -9,6 +9,9 @@ export class CategoryService {
 
   public categories = [
     {
+      name: 'Popular Items'
+    },
+    {
       name: 'Food'
     },
     {

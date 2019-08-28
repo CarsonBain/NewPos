@@ -50,6 +50,13 @@ export class ProductService {
       GST: 1.00,
       posCategory: 'Wine',
       GUID: ''
+    },
+    {
+      name: 'Champs',
+      price: 7.99,
+      GST: 1.00,
+      posCategory: 'Popular Items',
+      GUID: ''
     }
   ];
 
