@@ -97,3 +97,11 @@
   transition: transform 0.25s linear;
   transform: translateY(4px);
 }
+
+.modal-footer {
+  border-top: 0;
+}
+
+.modal-header {
+  border-bottom: 0;
+}

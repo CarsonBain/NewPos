@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TablesService } from 'src/app/tables.service';
 import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import { Product } from 'src/app/models/product/product.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-interactions',
@@ -71,7 +72,8 @@ export class InteractionsComponent implements OnInit{
     private route: ActivatedRoute,
     public tableService: TablesService,
     // public productService: ProductService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalService: NgbModal
     ) {}
 
   ngOnInit() {
@@ -127,6 +129,9 @@ export class InteractionsComponent implements OnInit{
     // don't close other seats
   }
 
+  public open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+  }
   public removeProduct(): void {
   }
 
@@ -181,6 +186,7 @@ export class InteractionsComponent implements OnInit{
     });
 
     if (tableFound.length === 0){
+      this.modalService.dismissAll();
       const newTable = this.buildTable(tableOptions);
       this.serverTables.push(newTable);
 
