@@ -3,9 +3,7 @@
 // @import '~wdi-assets/scss/layout/grid-overrides';
 @mixin responsive-gutter($size, $gutter-width) {
   @include media-breakpoint-up($size) {
-    .container,
-    [class^='col'],
-    [class*=' col'] {
+    .container {
       padding-right: floor($gutter-width / 2);
       padding-left: ceil($gutter-width / 2);
     }
@@ -278,6 +276,24 @@ ngb-datepicker {
       font-size: 15px;
       border-radius: 0;
       width: 100%;
+      color: #8d8d8d;
+
+      &[aria-expanded="true"] {
+        .seat {
+          color: #000;
+        }
+        .seat-icon {
+          fill: $blue;
+        }
+        .seat-index {
+          color: $blue-dark;
+          background-color: rgba(18, 38, 170, 0.25);
+        }
     }
   }
+}
+}
+.btn:focus, .btn.focus {
+  outline: none;
+  box-shadow: none;
 }

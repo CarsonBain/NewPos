@@ -20,3 +20,9 @@ body {
   height: 100%;
   background-color: $silver-lightest;
 }
+
+* {
+  &:focus {
+    outline: none;
+  }
+}
