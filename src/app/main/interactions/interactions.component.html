@@ -9,18 +9,18 @@
           <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-seat-0">
                 <ngb-panel *ngFor="let seat of openTableSeats; let i = index" id="ngb-panel-seat-{{i}}">
                   <ng-template ngbPanelTitle>
-                    <div [ngClass]="seat === openSeat ? 'activeSeat' : 'seat'" class="seat" (click)="setOpenSeat(seat)">
+                    <div [ngClass]="seat === openSeat ? 'activeSeat' : 'seat'" class="seat" (click)="setOpenSeat(seat)" (action)="test()">
                       <span>Seat {{ seat.number }}</span>
                     </div>
                   </ng-template>
-                  <!-- <ng-template *ngIf="openSeatItems" ngbPanelContent>
-                    <div [ngClass]="item === currentItem ? 'activeItem' : 'item'" class="item d-flex justify-content-between" *ngFor="let item of seat" (click)="setCurrentItem(item, seat)">
+                  <ng-template *ngIf="openSeatItems.length > 0" ngbPanelContent>
+                    <div class="item d-flex justify-content-between" *ngFor="let item of seat.items" (click)="setCurrentItem(item, seat)">
                         <div>
                             <span> {{ item.name }} </span>
                             <span> {{ item.price }} </span>
                         </div>
                     </div>
-                  </ng-template> -->
+                  </ng-template>
                 </ngb-panel>
           </ngb-accordion>
         </ng-template>

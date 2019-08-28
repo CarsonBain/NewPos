@@ -21,6 +21,27 @@ export class ProductService {
       GST: 1.00,
       posCategory: 'Food',
       GUID: ''
+    },
+    {
+      name: 'Chicken Salad',
+      price: 7.99,
+      GST: 1.00,
+      posCategory: 'Food',
+      GUID: ''
+    },
+    {
+      name: 'Chickpea Salad',
+      price: 7.99,
+      GST: 1.00,
+      posCategory: 'Food',
+      GUID: ''
+    },
+    {
+      name: 'Salmon Salad',
+      price: 7.99,
+      GST: 1.00,
+      posCategory: 'Food',
+      GUID: ''
     }
   ];
 

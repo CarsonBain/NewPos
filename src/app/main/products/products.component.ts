@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import { ProductService } from '../../product.service';
+import { Product } from 'src/app/models/product/product.model';
 
 @Component({
   selector: 'app-products',
@@ -11,6 +12,7 @@ import { ProductService } from '../../product.service';
 
 export class ProductsComponent implements OnInit{
   public products = [];
+  @Output() action = new EventEmitter<Product>();
 
   constructor(
     public productService: ProductService
@@ -24,8 +26,8 @@ export class ProductsComponent implements OnInit{
     this.products = this.productService.getProducts();
   }
 
-  public addProduct(): void{
-
+  public addProduct(product: Product): void{
+    this.action.emit(product);
   }
 }
 
