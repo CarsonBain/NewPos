@@ -9,6 +9,7 @@ import { InteractionsComponent } from './main/interactions/interactions.componen
 import { ProductsComponent } from './main/products/products.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
+import { TextInputComponent } from './shared/text-input/text-input.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MainComponent } from './main/main.component';
     LoginComponent,
     InteractionsComponent,
     ProductsComponent,
-    MainComponent
+    MainComponent,
+    TextInputComponent
   ],
   imports: [
     NgbModule,
