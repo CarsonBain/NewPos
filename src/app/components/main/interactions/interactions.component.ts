@@ -87,12 +87,10 @@ export class InteractionsComponent implements OnInit {
   }
 
   // TODO: Find some way of adding two in a row
-  @Input() set productAdd(product: Product) {
+  @Input() set productAdd(products: Product[]) {
     if (this.openSeat) {
-      product.GUID = this.newGUID();
-      this.openSeat.items.push(product);
-      console.log(this.openSeat)
-      console.log(this.openSeatItems)
+      // product.GUID = this.newGUID();
+      this.openSeat.items = products;
     }
   }
 
@@ -123,7 +121,6 @@ export class InteractionsComponent implements OnInit {
   public setOpenSeat(seat: Seat): void{
     this.openSeat = seat;
     this.openSeatItems = this.openSeat.items;
-    console.log(this.openSeatItems);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.
   }

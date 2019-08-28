@@ -14,49 +14,70 @@ export class ProductService {
       price: 7.99,
       GST: 1.00,
       posCategory: 'Food',
-      GUID: ''
+      GUID: '',
+      SKU: 'sku101',
+      selected: false,
+      quantity: 0
     },
     {
       name: 'Green Salad',
       price: 7.99,
       GST: 1.00,
       posCategory: 'Food',
-      GUID: ''
+      GUID: '',
+      SKU: 'sku102',
+      selected: false,
+      quantity: 0
     },
     {
       name: 'Chicken Salad',
       price: 7.99,
       GST: 1.00,
       posCategory: 'Food',
-      GUID: ''
+      GUID: '',
+      SKU: 'sku103',
+      selected: false,
+      quantity: 0
     },
     {
       name: 'Chickpea Salad',
       price: 7.99,
       GST: 1.00,
       posCategory: 'Food',
-      GUID: ''
+      GUID: '',
+      SKU: 'sku104',
+      selected: false,
+      quantity: 0
     },
     {
       name: 'Salmon Salad',
       price: 7.99,
       GST: 1.00,
       posCategory: 'Food',
-      GUID: ''
+      GUID: '',
+      SKU: 'sku105',
+      selected: false,
+      quantity: 0
     },
     {
       name: 'Red Wine',
       price: 7.99,
       GST: 1.00,
       posCategory: 'Wine',
-      GUID: ''
+      GUID: '',
+      SKU: 'sku106',
+      selected: false,
+      quantity: 0
     },
     {
       name: 'Champs',
       price: 7.99,
       GST: 1.00,
-      posCategory: 'Popular Items',
-      GUID: ''
+      posCategory: 'Happy Hour',
+      GUID: '',
+      SKU: 'sku107',
+      selected: false,
+      quantity: 0
     }
   ];
 
@@ -69,6 +90,8 @@ export class ProductService {
         }
       });
       return filteredResults;
+    } else {
+      return this.products;
     }
   }
 }

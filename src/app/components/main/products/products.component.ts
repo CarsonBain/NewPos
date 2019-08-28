@@ -1,7 +1,6 @@
 import { OnInit, EventEmitter, Output, Component, Input } from '@angular/core';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/product/product.model';
-import { Category } from 'src/app/models/category/category.model';
 
 @Component({
   selector: 'app-products',
@@ -19,12 +18,14 @@ export class ProductsComponent implements OnInit{
     this.products = this.productService.getAll({name : 'Popular Items'});
   }
 
-  public filterProducts(category: Category): void {
-    this.products = this.productService.getAll(category);
+  public filterProducts(event): void {
+    this.products = [];
+    this.products = event;
   }
 
-  public addProduct(product: Product): void {
-    this.addProductAction.emit(product);
+  public addProduct(products): void {
+    // console.log('product component ,', products);
+    this.addProductAction.emit(products);
   }
 }
 

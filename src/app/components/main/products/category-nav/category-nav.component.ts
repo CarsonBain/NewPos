@@ -1,6 +1,7 @@
 import { OnInit, Component, Output, EventEmitter} from '@angular/core';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Category } from 'src/app/models/category/category.model'
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-category-nav',
@@ -12,7 +13,7 @@ export class CategoryNavComponent implements OnInit {
   public categories = [];
   @Output() action = new EventEmitter<Category>();
 
-  constructor(public categoryService: CategoryService) {}
+  constructor(public categoryService: CategoryService, public productService: ProductService) {}
 
   public ngOnInit(): void {
     this.getCategories();
@@ -23,7 +24,8 @@ export class CategoryNavComponent implements OnInit {
   }
 
   public categorySelect(category: Category): void {
-    this.action.emit(category);
+    const products = this.productService.getAll(category);
+    this.action.emit(products);
   }
 }
 

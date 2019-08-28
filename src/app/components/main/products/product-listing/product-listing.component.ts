@@ -9,15 +9,23 @@ import { Product } from 'src/app/models/product/product.model';
 })
 
 export class ProductsListingComponent {
-  @Output() addProductAction = new EventEmitter<Product>();
+  @Output() addProductAction = new EventEmitter<Product[]>();
   @Input() products: Product[] = [];
+  public selectedItems = [];
 
   constructor(
     public productService: ProductService,
   ) {}
 
   public addProduct(product: Product): void {
-    this.addProductAction.emit(product);
+    if (this.selectedItems.indexOf(product) === -1){
+      product.selected = true;
+      product.quantity = 1;
+      this.selectedItems.push(product);
+    } else {
+      product.quantity ++;
+    }
+    this.addProductAction.emit(this.selectedItems);
   }
 }
 
