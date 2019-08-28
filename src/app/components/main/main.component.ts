@@ -1,5 +1,6 @@
 import { Component, } from '@angular/core';
 import { Product } from '../../models/product/product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,13 +10,14 @@ import { Product } from '../../models/product/product.model';
 
 export class MainComponent {
   public products = [];
-  public selectedProducts: Product[];
+  public selectedProduct: Product;
 
-  constructor(
+  constructor( public router: Router
   ) {}
 
-  public handleAddProduct(products: Product[]): void {
-    this.selectedProducts = products;
+  public handleAddProduct(product: Product): void {
+    console.log(product)
+    this.selectedProduct = product;
   }
 }
 
