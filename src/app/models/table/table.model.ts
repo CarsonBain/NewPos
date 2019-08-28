@@ -7,6 +7,8 @@ export class Table {
   billPrinted: boolean;
   createdAt: string;
   lastItemOrdered: string;
+  subtotal?: number;
+  totalItems?: number;
 
   constructor(args: Table) {
     Object.assign(this, args);

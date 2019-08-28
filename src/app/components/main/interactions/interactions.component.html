@@ -1,4 +1,4 @@
-<div class="interactions-wrap position-relative">
+<div class="interactions-wrap position-relative h-100">
   <div *ngIf="!serverTables.length" class="empty-state d-flex align-items-center justify-content-center flex-wrap position-absolute">
       <div class="rounded-circle"><svg class="table-icon" id="Bold" xmlns="http://www.w3.org/2000/svg" height="114px" width="114px" viewBox="-12 -12 48 48"><title>table-restaurant</title><path d="M8.5,13.75a2,2,0,0,0-2-2H3.2a.249.249,0,0,1-.249-.237c-.033-.633-.086-1.264-.175-1.889L1.99,4.108a1,1,0,0,0-1.98.283L.8,9.906a21.268,21.268,0,0,1-.317,7.568L.024,19.533a1,1,0,0,0,.759,1.193A1.018,1.018,0,0,0,1,20.75a1,1,0,0,0,.975-.783l.458-2.06a23.7,23.7,0,0,0,.527-3.92.25.25,0,0,1,.25-.237H6.25A.25.25,0,0,1,6.5,14v5.75a1,1,0,0,0,2,0Z"/><path d="M14.5,19.75a1,1,0,0,0-1-1,.5.5,0,0,1-.5-.5v-7.5a.5.5,0,0,1,.5-.5H18a1,1,0,0,0,0-2H6a1,1,0,0,0,0,2h4.5a.5.5,0,0,1,.5.5v7.5a.5.5,0,0,1-.5.5,1,1,0,0,0,0,2h3A1,1,0,0,0,14.5,19.75Z"/><path d="M23.519,17.474A21.254,21.254,0,0,1,23.2,9.907l.788-5.515a1,1,0,1,0-1.98-.283l-.788,5.515c-.089.625-.142,1.257-.175,1.89a.248.248,0,0,1-.249.236H17.5a2,2,0,0,0-2,2v6a1,1,0,0,0,2,0V14a.25.25,0,0,1,.25-.25h3.039a.249.249,0,0,1,.249.237,23.83,23.83,0,0,0,.528,3.921l.458,2.059A1,1,0,0,0,23,20.75a1.084,1.084,0,0,0,.218-.023,1,1,0,0,0,.759-1.193Z"/></svg></div>
     <div class="w-100 text-center mt-4">
@@ -32,8 +32,8 @@
                         <path d="M1.5,24c-0.356,0-0.666-0.254-0.735-0.603c-0.07-0.35,0.119-0.703,0.448-0.839C2.601,21.98,3.75,21.294,3.75,18.75v-15   C3.75,1.682,5.432,0,7.5,0H21c1.241,0,2.25,1.009,2.25,2.25V6.5c0,0.965-0.785,1.75-1.75,1.75h-2.75v10.5   c0,2.895-2.355,5.25-5.25,5.25H1.5z M13.5,22.5c2.068,0,3.75-1.682,3.75-3.75V2.25c0-0.259,0.044-0.511,0.129-0.75H7.5   c-1.241,0-2.25,1.009-2.25,2.25v15c0,1.604-0.402,2.841-1.224,3.75H13.5z M21.5,6.75c0.138,0,0.25-0.112,0.25-0.25V2.25   c0-0.414-0.336-0.75-0.75-0.75h-1.5c-0.414,0-0.75,0.336-0.75,0.75v4.5H21.5z"/>
                       </g>
                       </svg>
-                    <div class="ml-2 product-count font-small">( items)</div>
-                    <div class="ml-2 subtotal">$0.00</div>
+                    <div class="ml-2 product-count font-small">({{table.totalItems}} items)</div>
+                    <div class="ml-2 subtotal">${{table.subtotal}}</div>
                     </div>
               </div>
               <div class="arrow-down">
@@ -46,7 +46,7 @@
             <span class="text-white">View Table Summary</span>
             <div class="d-flex align-items-center h-100 border-left border-white pl-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="white" id="Bold" height="24px" width="24px" viewBox="0 0 24 24"><title>chair</title><path d="M18.521,10.775a.255.255,0,0,1-.021-.1V1a1,1,0,0,0-2,0v.5A.5.5,0,0,1,16,2H8a.5.5,0,0,1-.5-.5V1a1,1,0,0,0-2,0v9.673a.255.255,0,0,1-.021.1C5.24,11.311,3.5,15.228,3.5,15.5v1A.5.5,0,0,0,4,17H20a.5.5,0,0,0,.5-.5v-1C20.5,15.228,18.76,11.311,18.521,10.775ZM16.5,10a.5.5,0,0,1-.5.5H8a.5.5,0,0,1-.5-.5V7A.5.5,0,0,1,8,6.5h8a.5.5,0,0,1,.5.5Z"/><path d="M5.5,19a.5.5,0,0,0-.5-.5H4a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0Z"/><path d="M20,18.5H19a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0V19A.5.5,0,0,0,20,18.5Z"/></svg>
-            <button class="add-seat"><svg xmlns="http://www.w3.org/2000/svg" fill="white" height="24px" width="24px" viewBox="0 0 24 24"><title>add</title><path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"/></svg></button></div>
+            <button (click)="addSeat(table)" class="add-seat"><svg xmlns="http://www.w3.org/2000/svg" fill="white" height="24px" width="24px" viewBox="0 0 24 24"><title>add</title><path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"/></svg></button></div>
           </div>
           <ngb-accordion class="sub-interactions" #acc="ngbAccordion" [closeOthers]="true">
                 <ngb-panel *ngFor="let seat of openTableSeats; let i = index" id="ngb-panel-seat-{{i}}">
@@ -60,7 +60,7 @@
                         <div class="name">
                           Guest
                         </div>
-                         <span class="item-count">({{seat.items.length}} items)</span><span class="ml-1 items-price">$40.00</span>
+                         <span class="item-count">({{seat.items.length}} items)</span><span class="ml-1 items-price">${{seat.subtotal}} </span>
                       </div>
                       <svg xmlns="http://www.w3.org/2000/svg" class="chevron" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                     </div>
@@ -86,16 +86,43 @@
 <button class="btn text-white" *ngIf="tableSelected" (click)="open(addTable)">Add Table <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="16px" width="16px" viewBox="-4 0 32 32"><title>add</title><path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"/></svg></button>
 
 
-<ng-template #addTable let-modal>
-    <div class="modal-header">
+<ng-template #addTable let-modal class="p-2">
+    <div class="modal-header d-flex align-items-center position-relative">
       <h4 class="modal-title text-uppercase secondary-font" id="modal-basic-title">New Table</h4>
-      <button type="button" class="close btn" aria-label="Close" (click)="modal.dismiss()">
-        <span aria-hidden="true">&times;</span>
+      <button type="button" class="close px-3 py-0 btn position-absolute" aria-label="Close" (click)="modal.dismiss()">
+          <svg xmlns="http://www.w3.org/2000/svg"height="16px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000" fill="#b5b5b5" enable-background="new 0 0 1000 1000" xml:space="preserve">
+            <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+            <g><path d="M585.8,500l385.9-385.9c24.5-24.5,24.5-61.3,0-85.8c-24.5-24.5-61.3-24.5-85.8,0L500,414.3L114.1,28.4c-24.5-24.5-61.2-24.5-85.8,0c-24.5,24.5-24.5,61.3,0,85.8L411.2,500L28.4,885.9c-24.5,24.5-24.5,61.3,0,85.8c9.2,12.3,27.6,18.4,42.9,18.4c15.3,0,30.6-6.1,42.9-18.4L500,585.8l385.9,385.9c12.3,12.3,27.6,18.4,42.9,18.4s30.6-6.1,42.9-18.4c24.5-24.5,24.5-61.3,0-85.8L585.8,500z"/></g>
+            </svg>
       </button>
     </div>
-    <div class="modal-body">
-        <div *ngIf="tableNumberError" class="error px-3 py-2">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+    <div class="modal-body pt-0">
+      <div *ngIf="formSubmitted">
+        <div *ngIf="(form.invalid || tableNumberError)" class="error px-3 py-2">
+          <div *ngIf="tableNumberError">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                <title>road-sign-warning</title>
+                <g>
+                  <path d="M2.251,23.249c-0.379,0-0.755-0.097-1.087-0.28c-1.086-0.6-1.482-1.971-0.882-3.057l9.747-17.995   c0.207-0.376,0.512-0.681,0.884-0.887c0.334-0.184,0.709-0.281,1.086-0.281c0.211,0,0.421,0.03,0.626,0.089   c0.578,0.166,1.056,0.548,1.346,1.074l9.753,18.005c0.181,0.328,0.277,0.703,0.277,1.082c0,1.241-1.009,2.25-2.25,2.25H2.251z    M12,2.249c-0.127,0-0.248,0.032-0.361,0.094c-0.124,0.068-0.225,0.17-0.294,0.294L1.598,20.632   c-0.099,0.179-0.122,0.382-0.066,0.575c0.056,0.193,0.182,0.352,0.357,0.449c0.111,0.061,0.236,0.094,0.362,0.094h19.5   c0.414,0,0.75-0.337,0.75-0.75c0-0.126-0.032-0.251-0.094-0.362L12.655,2.633c-0.095-0.172-0.254-0.299-0.446-0.354   C12.14,2.259,12.07,2.249,12,2.249z"/>
+                  <path d="M12.001,19.499c-0.044,0-0.088-0.004-0.13-0.011c-0.513-0.06-0.923-0.47-0.983-0.983c-0.008-0.043-0.012-0.087-0.012-0.131   s0.004-0.088,0.012-0.131c0.06-0.513,0.47-0.922,0.983-0.982c0.042-0.008,0.086-0.011,0.131-0.011s0.088,0.004,0.13,0.011   c0.513,0.06,0.923,0.47,0.983,0.983c0.008,0.042,0.011,0.086,0.011,0.131s-0.004,0.088-0.011,0.131   c-0.06,0.513-0.47,0.923-0.983,0.983C12.089,19.496,12.046,19.499,12.001,19.499z"/>
+                  <path d="M12.001,15.749c-0.414,0-0.75-0.336-0.75-0.75v-6.75c0-0.414,0.336-0.75,0.75-0.75c0.413,0,0.75,0.336,0.75,0.75v6.75   C12.751,15.413,12.415,15.749,12.001,15.749z"/>
+                </g>
+                </svg>
+          Sorry, that table number already exists!
+          </div>
+          <div *ngIf="formSubmitted && newTableNumber.invalid">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                <title>road-sign-warning</title>
+                <g>
+                  <path d="M2.251,23.249c-0.379,0-0.755-0.097-1.087-0.28c-1.086-0.6-1.482-1.971-0.882-3.057l9.747-17.995   c0.207-0.376,0.512-0.681,0.884-0.887c0.334-0.184,0.709-0.281,1.086-0.281c0.211,0,0.421,0.03,0.626,0.089   c0.578,0.166,1.056,0.548,1.346,1.074l9.753,18.005c0.181,0.328,0.277,0.703,0.277,1.082c0,1.241-1.009,2.25-2.25,2.25H2.251z    M12,2.249c-0.127,0-0.248,0.032-0.361,0.094c-0.124,0.068-0.225,0.17-0.294,0.294L1.598,20.632   c-0.099,0.179-0.122,0.382-0.066,0.575c0.056,0.193,0.182,0.352,0.357,0.449c0.111,0.061,0.236,0.094,0.362,0.094h19.5   c0.414,0,0.75-0.337,0.75-0.75c0-0.126-0.032-0.251-0.094-0.362L12.655,2.633c-0.095-0.172-0.254-0.299-0.446-0.354   C12.14,2.259,12.07,2.249,12,2.249z"/>
+                  <path d="M12.001,19.499c-0.044,0-0.088-0.004-0.13-0.011c-0.513-0.06-0.923-0.47-0.983-0.983c-0.008-0.043-0.012-0.087-0.012-0.131   s0.004-0.088,0.012-0.131c0.06-0.513,0.47-0.922,0.983-0.982c0.042-0.008,0.086-0.011,0.131-0.011s0.088,0.004,0.13,0.011   c0.513,0.06,0.923,0.47,0.983,0.983c0.008,0.042,0.011,0.086,0.011,0.131s-0.004,0.088-0.011,0.131   c-0.06,0.513-0.47,0.923-0.983,0.983C12.089,19.496,12.046,19.499,12.001,19.499z"/>
+                  <path d="M12.001,15.749c-0.414,0-0.75-0.336-0.75-0.75v-6.75c0-0.414,0.336-0.75,0.75-0.75c0.413,0,0.75,0.336,0.75,0.75v6.75   C12.751,15.413,12.415,15.749,12.001,15.749z"/>
+                </g>
+                </svg>
+            Table number is required
+          </div>
+          <div *ngIf="formSubmitted && newTableSeats.invalid">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
           <title>road-sign-warning</title>
           <g>
             <path d="M2.251,23.249c-0.379,0-0.755-0.097-1.087-0.28c-1.086-0.6-1.482-1.971-0.882-3.057l9.747-17.995   c0.207-0.376,0.512-0.681,0.884-0.887c0.334-0.184,0.709-0.281,1.086-0.281c0.211,0,0.421,0.03,0.626,0.089   c0.578,0.166,1.056,0.548,1.346,1.074l9.753,18.005c0.181,0.328,0.277,0.703,0.277,1.082c0,1.241-1.009,2.25-2.25,2.25H2.251z    M12,2.249c-0.127,0-0.248,0.032-0.361,0.094c-0.124,0.068-0.225,0.17-0.294,0.294L1.598,20.632   c-0.099,0.179-0.122,0.382-0.066,0.575c0.056,0.193,0.182,0.352,0.357,0.449c0.111,0.061,0.236,0.094,0.362,0.094h19.5   c0.414,0,0.75-0.337,0.75-0.75c0-0.126-0.032-0.251-0.094-0.362L12.655,2.633c-0.095-0.172-0.254-0.299-0.446-0.354   C12.14,2.259,12.07,2.249,12,2.249z"/>
@@ -103,16 +130,20 @@
             <path d="M12.001,15.749c-0.414,0-0.75-0.336-0.75-0.75v-6.75c0-0.414,0.336-0.75,0.75-0.75c0.413,0,0.75,0.336,0.75,0.75v6.75   C12.751,15.413,12.415,15.749,12.001,15.749z"/>
           </g>
           </svg>
-          Sorry, that table number already exists!</div>
+            You must add 1 or more seats
+          </div>
+        </div>
+        </div>
+
         <form [formGroup]="form">
             <div class="d-flex">
-              <div>
-                <label class="m-2">Table Number</label>
-                <input formControlName="newTableNumber" type="number" class='px-3'>
+              <div class="modal-inputs">
+                <label class="my-2">Table Number</label>
+                <input formControlName="newTableNumber" type="number" class='px-3' required>
               </div>
-              <div>
-              <label class="m-2">Number of guests</label>
-              <input formControlName="newTableSeats" type="number" class=''>
+              <div class="modal-inputs">
+              <label class="my-2">Number of guests</label>
+              <input formControlName="newTableSeats" type="number" class='px-3' minlength="1">
               </div>
             </div>
           </form>

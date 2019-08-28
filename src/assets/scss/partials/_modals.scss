@@ -105,3 +105,12 @@
 .modal-header {
   border-bottom: 0;
 }
+
+.modal-content {
+  padding: 0.5rem;
+
+  .close {
+    right: 20px;
+    top: 20px;
+  }
+}
