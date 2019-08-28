@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
-import { Table } from '../../models/table/table.model'
-import { Seat } from '../../models/seat/seat.model'
+import { Table } from '../../../models/table/table.model'
+import { Seat } from '../../../models/seat/seat.model'
 import { ActivatedRoute } from '@angular/router';
-import { TablesService } from 'src/app/tables.service';
+import { TablesService } from 'src/app/services/table/tables.service';
 import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import { Product } from 'src/app/models/product/product.model';
 
@@ -70,7 +70,6 @@ export class InteractionsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     public tableService: TablesService,
-    // public productService: ProductService,
     private formBuilder: FormBuilder
     ) {}
 
@@ -85,16 +84,14 @@ export class InteractionsComponent implements OnInit{
     this.tableService.getServerTables(activatedServerId).forEach(table => {
       this.serverTables.push(table);
     });
-    console.log('Server Tables', this.serverTables);
-
   }
 
-@Input() set productAdd(product: Product) {
-  if(this.openSeat){
+  @Input() set productAdd(product: Product) {
     console.log('hi')
-    this.openSeat.items.push(product);
+    if (this.openSeat) {
+      this.openSeat.items.push(product);
+    }
   }
-}
 
   public addItem(product): void {
     // Move Logic elsewhere to dropdown
@@ -102,6 +99,7 @@ export class InteractionsComponent implements OnInit{
     // this.openSeat = this.seat1;
 
     if (this.openSeat) {
+      console.log('hi')
       // product.GUID = this.newGUID();
       // this.openSeat.push(product);
       // this.openSeat.items.push(product);

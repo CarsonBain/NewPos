@@ -1,0 +1,5 @@
+<div class="d-flex justify-content-between">
+    <div *ngFor="let category of categories" class="d-flex px-4 py-2 mx-1 justify-content-center category-tab">
+        <span (click)="categorySelect(category)">{{ category.name }}</span>
+    </div>
+</div>

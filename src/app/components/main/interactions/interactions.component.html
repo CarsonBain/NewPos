@@ -77,8 +77,6 @@
 <div class="interactions-footer d-flex flex-column">
 <button class="btn" *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
 
-<button *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
-
 <div *ngIf="displayAddTableModal" class="w-50 p-2 d-flex justify-content-center add-table-modal">
   <form [formGroup]="form">
     <div>
@@ -90,11 +88,6 @@
     <button (click)="submitTableForm()">Submit</button>
   </form>
   <span *ngIf="tableNumberError">That table already exists!</span>
-</div>
-<div *ngIf="displayAddTableModal" class="p-2 d-flex justify-content-center add-table-modal mt-auto">
-    <label class="m-2">Table Name</label>
-    <input class='rounded-pill px-3'>
-  </div>
 </div>
 
 
