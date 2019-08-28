@@ -14,14 +14,8 @@ export class MainComponent {
   constructor(
   ) {}
 
-  // public onAction(product){
-  //   console.log('onAction hit');
-  //   this.selectedProduct = product;
-  // }
-  
-  public onAction(): void {
-    console.log('hit');
+  public handleAddProduct(product: Product): void {
+    this.selectedProduct = product;
   }
-
 }
 

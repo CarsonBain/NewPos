@@ -11,12 +11,16 @@ import { Category } from 'src/app/models/category/category.model';
 
 export class ProductsComponent {
   public products = [];
-  @Output() action = new EventEmitter<Product>();
+  @Output() addProductAction = new EventEmitter<Product>();
 
   constructor(public productService: ProductService) {}
 
   public filterProducts(category: Category): void {
     this.products = this.productService.getAll(category);
+  }
+
+  public addProduct(product: Product): void {
+    this.addProductAction.emit(product);
   }
 }
 

@@ -1,4 +1,2 @@
-  <div>
     <app-category-nav (action)="filterProducts($event)"></app-category-nav>
-    <app-products-listing [products]="products"></app-products-listing>
-  </div>
+    <app-products-listing (addProductAction)="addProduct($event)" [products]="products"></app-products-listing>

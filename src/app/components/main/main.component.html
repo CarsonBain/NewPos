@@ -1,4 +1,4 @@
 <div class="d-flex">
   <app-interactions [productAdd]="selectedProduct"></app-interactions>
-  <app-products class="w-75" (action)="onAction($event)"></app-products>
+  <app-products class="w-75" (addProductAction)="handleAddProduct($event)"></app-products>
 </div>

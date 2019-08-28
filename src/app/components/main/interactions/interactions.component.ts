@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
-import { Table } from '../../../models/table/table.model'
-import { Seat } from '../../../models/seat/seat.model'
+import { Component, OnInit, Input } from '@angular/core';
+import { Table } from 'src/app/models/table/table.model'
+import { Seat } from 'src/app/models/seat/seat.model'
 import { ActivatedRoute } from '@angular/router';
 import { TablesService } from 'src/app/services/table/tables.service';
 import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
@@ -13,7 +13,6 @@ import { Product } from 'src/app/models/product/product.model';
 })
 
 export class InteractionsComponent implements OnInit {
-  @ViewChild('newTableNumber') tableNumberField: ElementRef;
 
   get newTableNumber(): FormControl {
     return this.form.get('newTableNumber') as FormControl;
@@ -23,7 +22,6 @@ export class InteractionsComponent implements OnInit {
     return this.form.get('newTableSeats') as FormControl;
   }
 
-  // @Input() productAdd: Product;
   public openTable: Table;
   public openTableSeats: Seat[] = [];
   public openSeatItems: Product[] = [];
@@ -75,7 +73,6 @@ export class InteractionsComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    // this.getProducts();
     // this.getTablesForServer();
   }
 
@@ -86,27 +83,31 @@ export class InteractionsComponent implements OnInit {
     });
   }
 
+  // TODO: Find some way of adding two in a row
   @Input() set productAdd(product: Product) {
     if (this.openSeat) {
+      product.GUID = this.newGUID();
       this.openSeat.items.push(product);
+      console.log(this.openSeat)
+      console.log(this.openSeatItems)
     }
   }
 
-  public addItem(product): void {
-    // Move Logic elsewhere to dropdown
-    // this.openTable = this.table1;
-    // this.openSeat = this.seat1;
+  // public addItem(product): void {
+  //   // Move Logic elsewhere to dropdown
+  //   // this.openTable = this.table1;
+  //   // this.openSeat = this.seat1;
 
-    if (this.openSeat) {
-      // product.GUID = this.newGUID();
-      // this.openSeat.push(product);
-      // this.openSeat.items.push(product);
-    }
-  }
+  //   if (this.openSeat) {
+  //     // product.GUID = this.newGUID();
+  //     // this.openSeat.push(product);
+  //     // this.openSeat.items.push(product);
+  //   }
+  // }
 
   public setCurrentItem(product: Product, seat: Seat): void{
-    // console.log(product, seat)
     this.openSeat = seat;
+    console.log(product);
     this.selectedItem = product;
   }
 
@@ -120,18 +121,19 @@ export class InteractionsComponent implements OnInit {
     this.openSeat = seat;
     this.openSeatItems = this.openSeat.items;
     console.log(this.openSeatItems);
-    // don't close other seats
+    // TODO: don't close other seats
+    // Set a value on the seat Modal, open or no.
   }
 
   public removeProduct(): void {
   }
 
-  // public newGUID(): string {
-  //   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-  //     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-  //     return v.toString(16);
-  //   });
-  // }
+  public newGUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
 
   public buildTable(tableOptions): Table {
@@ -179,7 +181,7 @@ export class InteractionsComponent implements OnInit {
       const newTable = this.buildTable(tableOptions);
       this.serverTables.push(newTable);
 
-      // Make this validation better
+      // TODO: Make this validation better
       this.tableNumberError = false;
       this.form.controls.newTableNumber.setValue('');
       this.form.controls.newTableSeats.setValue('');

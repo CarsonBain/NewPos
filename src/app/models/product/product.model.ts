@@ -7,7 +7,6 @@ export class Product {
   GUID: string;
 
   constructor(args: Product) {
-    // super();
     Object.assign(this, args);
   }
 }
