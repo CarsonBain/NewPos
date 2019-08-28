@@ -232,3 +232,52 @@ ngb-datepicker {
   // content was displayed
   top: 0;
 }
+
+.btn-link {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.interactions-wrap {
+    .card {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
+    }
+    .card-header {
+      background-color: white;
+      position: relative;
+
+      button {
+        height: 100px;
+
+        &[aria-expanded="true"] {
+          .seat-count {
+            color: $pink;
+            background-color: rgba(172, 86, 179, 0.24);
+          }
+          .table-icon {
+            fill: $pink;
+          }
+        }
+
+        &.btn-link:hover {
+          text-decoration: none !important;
+        }
+
+        &:after {
+          content: '',
+
+        }
+      }
+    }
+}
+
+.sub-interactions {
+  .card-header {
+    button.btn-link {
+      height: 64px;
+      font-size: 15px;
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+}

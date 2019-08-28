@@ -85,6 +85,8 @@ export class InteractionsComponent implements OnInit{
     this.tableService.getServerTables(activatedServerId).forEach(table => {
       this.serverTables.push(table);
     });
+    console.log('Server Tables', this.serverTables);
+
   }
 
 @Input() set productAdd(product: Product) {
@@ -142,8 +144,8 @@ export class InteractionsComponent implements OnInit{
       serverId: this.currentServer,
       seats: tableOptions.seats,
       billPrinted: false,
-      createdAt: new Date(),
-      lastItemOrdered: new Date(),
+      createdAt: new Date().toLocaleTimeString(),
+      lastItemOrdered: new Date().toLocaleTimeString(),
     };
 
     return table;

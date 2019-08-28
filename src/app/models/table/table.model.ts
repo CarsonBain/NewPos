@@ -5,8 +5,8 @@ export class Table {
   serverId: number;
   seats: Seat[];
   billPrinted: boolean;
-  createdAt: Date;
-  lastItemOrdered: Date;
+  createdAt: string;
+  lastItemOrdered: string;
 
   constructor(args: Table) {
     // super();

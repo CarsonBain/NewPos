@@ -1,20 +1,65 @@
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-table-0">
+<div class="interactions-wrap">
+<ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
     <ngb-panel *ngFor="let table of serverTables; let i = index" id="ngb-panel-table-{{i}}">
         <ng-template ngbPanelTitle>
-          <div (click)="setOpenTable(table)" class="d-flex list-table">
-              Table {{ table.number }}
+          <div (click)="setOpenTable(table)" class="d-flex list-table align-items-center flex-wrap">
+            <div class="d-flex w-100 justify-content-between">
+              <p>Table {{table.number}}</p>
+              <p class="small-text">Created {{table.createdAt}}</p>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <div class="indicators d-flex align-items-center">
+                <svg class="table-icon" id="Bold" xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" viewBox="0 0 24 24"><title>table-restaurant</title><path d="M8.5,13.75a2,2,0,0,0-2-2H3.2a.249.249,0,0,1-.249-.237c-.033-.633-.086-1.264-.175-1.889L1.99,4.108a1,1,0,0,0-1.98.283L.8,9.906a21.268,21.268,0,0,1-.317,7.568L.024,19.533a1,1,0,0,0,.759,1.193A1.018,1.018,0,0,0,1,20.75a1,1,0,0,0,.975-.783l.458-2.06a23.7,23.7,0,0,0,.527-3.92.25.25,0,0,1,.25-.237H6.25A.25.25,0,0,1,6.5,14v5.75a1,1,0,0,0,2,0Z"/><path d="M14.5,19.75a1,1,0,0,0-1-1,.5.5,0,0,1-.5-.5v-7.5a.5.5,0,0,1,.5-.5H18a1,1,0,0,0,0-2H6a1,1,0,0,0,0,2h4.5a.5.5,0,0,1,.5.5v7.5a.5.5,0,0,1-.5.5,1,1,0,0,0,0,2h3A1,1,0,0,0,14.5,19.75Z"/><path d="M23.519,17.474A21.254,21.254,0,0,1,23.2,9.907l.788-5.515a1,1,0,1,0-1.98-.283l-.788,5.515c-.089.625-.142,1.257-.175,1.89a.248.248,0,0,1-.249.236H17.5a2,2,0,0,0-2,2v6a1,1,0,0,0,2,0V14a.25.25,0,0,1,.25-.25h3.039a.249.249,0,0,1,.249.237,23.83,23.83,0,0,0,.528,3.921l.458,2.059A1,1,0,0,0,23,20.75a1.084,1.084,0,0,0,.218-.023,1,1,0,0,0,.759-1.193Z"/></svg>
+                <div class="ml-2 seats rounded-circle seat-count secondary-font">{{table.seats.length}}</div>
+                <div class="countdown"></div>
+                </div>
+                <div class="item-info d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" fill="#d8d8d8" height="20px" width="20px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                      <title>receipt-1</title>
+                      <g>
+                        <path d="M7.5,5.25c-0.414,0-0.75-0.336-0.75-0.75S7.087,3.75,7.5,3.75h2.25c0.414,0,0.75,0.336,0.75,0.75s-0.336,0.75-0.75,0.75   H7.5z"/>
+                        <path d="M8.25,9C7.837,9,7.5,8.664,7.5,8.25S7.837,7.5,8.25,7.5h6C14.664,7.5,15,7.836,15,8.25S14.664,9,14.25,9H8.25z"/>
+                        <path d="M8.25,12.75c-0.414,0-0.75-0.336-0.75-0.75s0.336-0.75,0.75-0.75h6c0.414,0,0.75,0.336,0.75,0.75s-0.336,0.75-0.75,0.75   H8.25z"/>
+                        <path d="M8.25,16.5c-0.414,0-0.75-0.336-0.75-0.75S7.837,15,8.25,15h6c0.414,0,0.75,0.336,0.75,0.75s-0.336,0.75-0.75,0.75H8.25z"/>
+                        <path d="M8.25,20.25c-0.414,0-0.75-0.336-0.75-0.75s0.336-0.75,0.75-0.75h3c0.414,0,0.75,0.336,0.75,0.75s-0.336,0.75-0.75,0.75   H8.25z"/>
+                        <path d="M1.5,24c-0.356,0-0.666-0.254-0.735-0.603c-0.07-0.35,0.119-0.703,0.448-0.839C2.601,21.98,3.75,21.294,3.75,18.75v-15   C3.75,1.682,5.432,0,7.5,0H21c1.241,0,2.25,1.009,2.25,2.25V6.5c0,0.965-0.785,1.75-1.75,1.75h-2.75v10.5   c0,2.895-2.355,5.25-5.25,5.25H1.5z M13.5,22.5c2.068,0,3.75-1.682,3.75-3.75V2.25c0-0.259,0.044-0.511,0.129-0.75H7.5   c-1.241,0-2.25,1.009-2.25,2.25v15c0,1.604-0.402,2.841-1.224,3.75H13.5z M21.5,6.75c0.138,0,0.25-0.112,0.25-0.25V2.25   c0-0.414-0.336-0.75-0.75-0.75h-1.5c-0.414,0-0.75,0.336-0.75,0.75v4.5H21.5z"/>
+                      </g>
+                      </svg>
+                    <div class="ml-2 product-count font-small">(6 items)</div>
+                    <div class="ml-2 subtotal">$0.00</div>
+                    </div>
+              </div>
+              <div class="arrow-down">
+              </div>
           </div>
         </ng-template>
+
         <ng-template *ngIf="openTableSeats" ngbPanelContent>
-          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-seat-0">
+          <div class="table-summary d-flex align-items-center px-3 justify-content-between">
+            <span class="text-white">View Table Summary</span>
+            <div class="d-flex align-items-center h-100 border-left border-white pl-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" id="Bold" height="24px" width="24px" viewBox="0 0 24 24"><title>chair</title><path d="M18.521,10.775a.255.255,0,0,1-.021-.1V1a1,1,0,0,0-2,0v.5A.5.5,0,0,1,16,2H8a.5.5,0,0,1-.5-.5V1a1,1,0,0,0-2,0v9.673a.255.255,0,0,1-.021.1C5.24,11.311,3.5,15.228,3.5,15.5v1A.5.5,0,0,0,4,17H20a.5.5,0,0,0,.5-.5v-1C20.5,15.228,18.76,11.311,18.521,10.775ZM16.5,10a.5.5,0,0,1-.5.5H8a.5.5,0,0,1-.5-.5V7A.5.5,0,0,1,8,6.5h8a.5.5,0,0,1,.5.5Z"/><path d="M5.5,19a.5.5,0,0,0-.5-.5H4a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0Z"/><path d="M20,18.5H19a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0V19A.5.5,0,0,0,20,18.5Z"/></svg>
+            <button class="add-seat"><svg xmlns="http://www.w3.org/2000/svg" fill="white" height="24px" width="24px" viewBox="0 0 24 24"><title>add</title><path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"/></svg></button></div>
+          </div>
+          <ngb-accordion class="sub-interactions" #acc="ngbAccordion" [closeOthers]="true">
                 <ngb-panel *ngFor="let seat of openTableSeats; let i = index" id="ngb-panel-seat-{{i}}">
                   <ng-template ngbPanelTitle>
-                    <div [ngClass]="seat === openSeat ? 'activeSeat' : 'seat'" class="seat" (click)="setOpenSeat(seat)" (action)="test()">
-                      <span>Seat {{ seat.number }}</span>
+                    <div [ngClass]="seat === openSeat ? 'activeSeat' : 'seat'" class="seat align-items-center d-flex justify-content-between list-table" (click)="setOpenSeat(seat)">
+                      <div class="seat-counts d-flex align-items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="#586cf3" id="Bold" height="24px" width="24px" viewBox="0 0 24 24"><title>chair</title><path d="M18.521,10.775a.255.255,0,0,1-.021-.1V1a1,1,0,0,0-2,0v.5A.5.5,0,0,1,16,2H8a.5.5,0,0,1-.5-.5V1a1,1,0,0,0-2,0v9.673a.255.255,0,0,1-.021.1C5.24,11.311,3.5,15.228,3.5,15.5v1A.5.5,0,0,0,4,17H20a.5.5,0,0,0,.5-.5v-1C20.5,15.228,18.76,11.311,18.521,10.775ZM16.5,10a.5.5,0,0,1-.5.5H8a.5.5,0,0,1-.5-.5V7A.5.5,0,0,1,8,6.5h8a.5.5,0,0,1,.5.5Z"/><path d="M5.5,19a.5.5,0,0,0-.5-.5H4a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0Z"/><path d="M20,18.5H19a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0V19A.5.5,0,0,0,20,18.5Z"/></svg>
+                      <div class="ml-2 rounded-circle seat-index">{{i +1}}</div>
+                      </div>
+                      <div class="seat-info text-right">
+                        <div class="name">
+                          Guest
+                        </div>
+                         <span class="item-count">({{seat.items.length}} items)</span><span class="ml-1 items-price">$40.00</span>
+                      </div>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="chevron" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                     </div>
                   </ng-template>
                   <ng-template *ngIf="openSeatItems.length > 0" ngbPanelContent>
-                    <div class="item d-flex justify-content-between" *ngFor="let item of seat.items" (click)="setCurrentItem(item, seat)">
+                    <div [ngClass]="item === selectedItem ? 'activeItem' : 'item'" class="item d-flex justify-content-between" *ngFor="let item of seat.items" (click)="setCurrentItem(item, seat)">
                         <div>
                             <span> {{ item.name }} </span>
                             <span> {{ item.price }} </span>
@@ -29,6 +74,8 @@
 
 <!-- <button (click)="removeProduct()"></button> -->
 
+<div class="interactions-footer d-flex flex-column">
+<button class="btn" *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
 
 <button *ngIf="tableSelected" (click)="toggleAddTableModal()">Table +</button>
 
@@ -44,5 +91,11 @@
   </form>
   <span *ngIf="tableNumberError">That table already exists!</span>
 </div>
+<div *ngIf="displayAddTableModal" class="p-2 d-flex justify-content-center add-table-modal mt-auto">
+    <label class="m-2">Table Name</label>
+    <input class='rounded-pill px-3'>
+  </div>
+</div>
+
 
 
