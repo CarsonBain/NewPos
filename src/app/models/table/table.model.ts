@@ -9,7 +9,6 @@ export class Table {
   lastItemOrdered: string;
 
   constructor(args: Table) {
-    // super();
     Object.assign(this, args);
   }
 }

@@ -5,7 +5,6 @@ export class Seat {
   items: Product[];
 
   constructor(args: Seat) {
-    // super();
     Object.assign(this, args);
   }
 }

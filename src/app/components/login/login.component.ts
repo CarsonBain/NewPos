@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServerService } from '../server.service';
+import { ServerService } from '../../services/server/server.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     }
     this.error = false;
     this.pinCode.push(value);
-    console.log(this.pinCode);
     if (this.pinCode.length === 4) {
       this.attemptSubmit();
     }

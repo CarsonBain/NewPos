@@ -1,0 +1,16 @@
+.products-container{
+  height: 100%;
+  width: 75;
+
+  .product {
+    width: 140px;
+    height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid;
+    
+    &:focus{
+      outline: none;
+    }
+  }
+}

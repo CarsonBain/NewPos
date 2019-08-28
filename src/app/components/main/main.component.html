@@ -1,0 +1,8 @@
+<div class="main-wrap d-flex h-100">
+  <div class="interactions-wrapper">
+    <app-interactions [productAdd]="selectedProduct"></app-interactions>
+  </div>
+  <div class="products-wrapper">
+    <app-products (addProductAction)="handleAddProduct($event)"></app-products>
+  </div>
+</div>

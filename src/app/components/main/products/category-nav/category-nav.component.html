@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-between category-nav-container">
+    <span *ngFor="let category of categories" 
+    [ngClass]="{'activeCategory': category === currentCategory}"
+    class="d-flex justify-content-center w-25 category-tab"
+    (click)="categorySelect(category)">
+    {{ category.name }}
+    </span>
+</div>
