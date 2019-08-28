@@ -1,7 +1,10 @@
+@import 'component-includes';
+
 .interactions-wrap {
   height: 100%;
   width: 400px;
   background-color: #f3f5f7;
+  overflow-y: auto;
 }
 
 .item {
@@ -82,4 +85,29 @@ button.add-seat {
   background-color: transparent;
   color: white;
   border: none;
+}
+
+.table-summary {
+  height: 54px;
+  color: #fff;
+  background-color: $blue;
+  font-size: 15px;
+}
+
+.seat-index {
+  width: 32px;
+  height: 32px;
+  background-color: #e1e1e1;
+  line-height: 35px;
+  font-weight: 600;
+  color: #000;
+}
+
+.seat .chevron {
+  position: absolute;
+  right: 30px;
+}
+
+.name {
+  font-size: 13px;
 }
