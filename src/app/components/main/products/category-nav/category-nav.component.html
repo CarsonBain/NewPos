@@ -8,7 +8,7 @@
 
     </span> -->
 
-    <div class="d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Happy Hour')">
+    <div [ngClass]="{'active': activeCategory === 'Happy Hour'}" class="d-flex justify-content-center category-tab align-items-center nav-item px-3 py-2" (click)="categorySelect('Happy Hour')">
         <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24px" width="24px" version="1.1" id="Regular" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
           <title>party-confetti</title>
           <g>
@@ -25,7 +25,7 @@
           </svg>
       Happy Hour
     </div>
-    <div class="d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Food')">
+    <div [ngClass]="{'active': activeCategory === 'Food'}" class="px-3 py-2 d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Food')">
         <svg class="mr-2" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Regular" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
           <title>fast-food-french-fries</title>
           <g>
@@ -34,7 +34,7 @@
           </svg>
       Food
     </div>
-    <div class="d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Wine')">
+    <div [ngClass]="{'active': activeCategory === 'Wine'}" class="px-3 py-2 d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Wine')">
         <svg class="ml-2" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Regular" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
           <title>wine-glass</title>
           <g>
@@ -43,7 +43,7 @@
           </svg>
       Wine
     </div>
-    <div class="d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Beer')">
+    <div [ngClass]="{'active': activeCategory === 'Beer'}" class="px-3 py-2 d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Beer')">
         <svg class="mr-2" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Regular" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
           <title>beer-mug</title>
           <g>
@@ -54,7 +54,7 @@
           </svg>
       Beer
     </div>
-    <div class="d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Beverage')">
+    <div [ngClass]="{'active': activeCategory === 'Beverage'}" class="px-3 py-2 d-flex justify-content-center category-tab align-items-center nav-item" (click)="categorySelect('Beverage')">
         <svg class="mr-2" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Regular" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
           <title>cocktail-glass</title>
           <g>

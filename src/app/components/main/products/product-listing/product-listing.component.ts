@@ -18,6 +18,7 @@ export class ProductsListingComponent {
   public selectedItems = [];
   public openSeat: Seat;
   public openTable: Table;
+  public tempSeatItems = [];
 
   constructor(
     public productService: ProductService,
@@ -28,7 +29,8 @@ export class ProductsListingComponent {
   public addProduct(product: Product): void {
     this.openSeat = this.seatService.getOpenSeat();
     this.openTable = this.tableService.getOpenTable();
-    if(this.openSeat){
+    if(this.openSeat) {
+      this.tempSeatItems.push(product);
       this.seatService.addItemToSeat(this.openSeat, product);
       this.tableService.getTableItemQuantity(this.openTable);
       this.tableService.getTableSubTotal(this.openTable);
@@ -40,8 +42,9 @@ export class ProductsListingComponent {
     // } else {
     //   product.quantity ++;
     // }
-    
+
     // this.addProductAction.emit(product);
   }
+
 }
 

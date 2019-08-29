@@ -44,7 +44,8 @@ export class InteractionsComponent implements OnInit {
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
-  @Output() selectedTable = new EventEmitter<Table>();
+  @Output() tableChange = new EventEmitter<Table>();
+  @Output() seatChange = new EventEmitter<Seat>();
 
   constructor(
     private route: ActivatedRoute,
@@ -86,7 +87,9 @@ export class InteractionsComponent implements OnInit {
     // this.openTable = table;
     this.openTable = this.tableService.setOpenTable(table);
     this.openTableSeats = this.openTable.seats;
-    this.selectedTable.emit(table);
+    if (table) {
+    this.tableChange.emit(table);
+    }
 
     // close other tables
   }
@@ -95,6 +98,8 @@ export class InteractionsComponent implements OnInit {
     this.openSeat = this.seatService.setOpenSeat(seat);
     // this.openSeat = seat;
     this.openSeatItems = this.openSeat.items;
+    this.seatChange.emit(seat);
+    console.log(seat);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.
   }

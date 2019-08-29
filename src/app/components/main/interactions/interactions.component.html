@@ -6,7 +6,7 @@
     <p>Add a table to get started!</p>
     </div>
   </div>
-  
+
 <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
     <ngb-panel *ngFor="let table of serverTables; let i = index" id="ngb-panel-table-{{i}}">
         <ng-template ngbPanelTitle>
