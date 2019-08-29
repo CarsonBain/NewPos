@@ -39,7 +39,7 @@ export class InteractionsComponent implements OnInit {
   public formSubmitted = false;
   public displayErrors = false;
   @Output() viewTableSummary = new EventEmitter<boolean>();
-  public displayTableSummary = false;
+  @Output() tableChange = new EventEmitter<Table>();
 
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
@@ -84,14 +84,11 @@ export class InteractionsComponent implements OnInit {
   }
 
   public setOpenTable(table: Table): void {
-    // this.openTable = table;
     this.openTable = this.tableService.setOpenTable(table);
     this.openTableSeats = this.openTable.seats;
     if (table) {
     this.tableChange.emit(table);
     }
-
-    // close other tables
   }
 
   public setOpenSeat(seat: Seat): void{
@@ -105,7 +102,6 @@ export class InteractionsComponent implements OnInit {
   }
 
   public toggleTableSummary(): void{
-    // console.log(table);
     this.viewTableSummary.emit();
   }
 
@@ -184,8 +180,8 @@ export class InteractionsComponent implements OnInit {
       this.toggleAddTableModal();
 
       // Figure out how to open accordions to do this.
-      // this.setOpenTable(newTable);
-      // this.setOpenSeat(this.openTable.seats[0]);
+      this.setOpenTable(newTable);
+      this.setOpenSeat(this.openTable.seats[0]);
       this.formSubmitted = false;
     } else if (this.form.invalid || this.tableNumberError) {
       this.displayErrors = true;

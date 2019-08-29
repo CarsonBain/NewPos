@@ -42,7 +42,7 @@
           </div>
         </ng-template>
 
-        <ng-template *ngIf="openTableSeats" ngbPanelContent>
+        <ng-template *ngIf="openTable.seats" ngbPanelContent>
           <div class="table-summary d-flex align-items-center px-3 justify-content-between">
             <span (click)="toggleTableSummary()" class="text-white">View Table Summary</span>
             <div class="d-flex align-items-center h-100 border-left border-white pl-3">

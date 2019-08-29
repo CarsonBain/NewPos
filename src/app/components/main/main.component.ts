@@ -24,7 +24,6 @@ export class MainComponent {
   public handleAddProduct(product: Product): void {
     this.selectedProduct = product;
   }
-
   public toggleTableSummary(): void{
     this.viewTableSummary = !this.viewTableSummary;
   }
