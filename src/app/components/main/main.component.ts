@@ -12,19 +12,17 @@ import { Table } from 'src/app/models/table/table.model';
 export class MainComponent {
   public products = [];
   public selectedProduct: Product;
-  public selectedTable: Table;
-
+  public viewTableSummary = false;
 
   constructor( public router: Router
   ) {}
 
   public handleAddProduct(product: Product): void {
-    console.log(product)
     this.selectedProduct = product;
   }
 
-  public selectTable(table) {
-    this.selectedTable = table;
+  public toggleTableSummary(): void{
+    this.viewTableSummary = !this.viewTableSummary;
   }
 }
 
