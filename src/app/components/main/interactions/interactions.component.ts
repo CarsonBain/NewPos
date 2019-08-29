@@ -40,12 +40,10 @@ export class InteractionsComponent implements OnInit {
   public displayErrors = false;
   @Output() viewTableSummary = new EventEmitter<boolean>();
   @Output() tableChange = new EventEmitter<Table>();
+  @Output() seatChange = new EventEmitter<Seat>();
 
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
-
-  @Output() tableChange = new EventEmitter<Table>();
-  @Output() seatChange = new EventEmitter<Seat>();
 
   constructor(
     private route: ActivatedRoute,
@@ -94,8 +92,8 @@ export class InteractionsComponent implements OnInit {
   public setOpenSeat(seat: Seat): void{
     this.openSeat = this.seatService.setOpenSeat(seat);
     // this.openSeat = seat;
+    console.log(this.openSeat);
     this.openSeatItems = this.openSeat.items;
-    this.seatChange.emit(seat);
     console.log(seat);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.

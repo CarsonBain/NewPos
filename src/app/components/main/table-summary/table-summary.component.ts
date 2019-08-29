@@ -1,8 +1,6 @@
 import { OnInit, EventEmitter, Output, Component, Input } from '@angular/core';
 import { Table } from 'src/app/models/table/table.model';
 import { TablesService } from 'src/app/services/table/tables.service';
-import * as jsPDF from 'jspdf';
-import * as html2canvas from 'html2canvas';
 import * as html2pdf from 'html2pdf.js';
 
 @Component({
@@ -13,16 +11,18 @@ import * as html2pdf from 'html2pdf.js';
 
 export class TableSummaryComponent implements OnInit{
   public tableSummaryTable: Table;
+  public viewTableSummary = false;
   // public testing: Table;
-  
+
   constructor(public tableService: TablesService){}
-  
+
   public ngOnInit(){
   }
-  
+
   @Input() set openTable(table: Table) {
     this.tableSummaryTable = table;
   }
+
 
   public printBill(): void{
     const element = document.getElementById('receipt');
@@ -38,7 +38,7 @@ export class TableSummaryComponent implements OnInit{
     //     left: 40,
     //     width: 522
     // };
-        
+
     // pdf.fromHTML(source, margins.left, margins.top, {
     //   'width': margins.width,
     //   'elementHandlers': specialElementHandlers
