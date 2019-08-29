@@ -1,6 +1,6 @@
 <div>Table Summary</div>
 <div class="table-summary-container">
-  <div *ngFor="let seat of openTable.seats">
+  <div *ngFor="let seat of tableSummaryTable.seats">
     <input type="checkbox">
     <span>Seat {{seat.number}}</span>
     <div *ngFor="let item of seat.items">
@@ -8,4 +8,46 @@
   </div>
 </div>
 
-<button>Print Bill</button>
+<!-- <button (click)="printBill()">Print Bill</button> -->
+
+
+<button (click)="printBill();">PDF</button>
+
+<div id="receipt">
+  <table style="width: 400px; border: 1px solid striped" class="receipt-body">
+    <colgroup>
+        <col width="70%">
+        <col width="30%">
+    </colgroup>
+    <tbody class="w-100 d-table table-body">
+      <tr class="py-2">
+        <td>Fake Winery</td>
+        <td class="text-right">Fake street at smithville</td>
+      </tr>
+      <tr class="py-2">
+        <td>Order No. {{ tableSummaryTable.number }}</td>
+        <td class="text-right">{{ tableSummaryTable.createdAt }}</td>
+      </tr>
+      <tr class="py-3">
+        <td>Sale</td>
+        <td class="text-right">Served by: Jolie</td>
+      </tr>
+      <div *ngFor="let seat of tableSummaryTable.seats">
+        <tr>
+          <td class="py-2" colspan="2"> Seat {{seat.number}}
+          </td>
+        </tr>
+        <div *ngFor="let item of seat.items">
+          <tr class="d-flex justify-content-between">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+          </tr>
+        </div>
+        <tr class="d-flex justify-content-between">
+          <td></td>
+          <td>{{ seat.subtotal }}</td>
+        </tr>
+      </div>
+    </tbody>
+  </table>
+</div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SeatService } from 'src/app/services/seat/seat.service'
 import { Table } from 'src/app/models/table/table.model';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -99,9 +100,13 @@ public tables = [
     return serverTables;
   }
   
-  public getTables(){
-    return this.tables;
-  }
+  // getHeroes(): Observable<Hero[]> {
+  //   return of(HEROES);
+  // }
+  
+  // public getTables(): Observable<any>{
+  //   return of(this.tables);
+  // }
   
   public createTable(tableOptions): Table{
     const table = {
@@ -140,6 +145,9 @@ public tables = [
     return this.openTable;
   }
   
+  // public getOpenTable(): Observable<any>{
+  //   return of(this.openTable);
+  // }
   public getOpenTable(): Table {
     return this.openTable;
   }

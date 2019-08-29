@@ -33,7 +33,6 @@ export class SeatService {
   }
   
   public removeSeat(seatToRemove: Seat, table: Table): void{
-    console.log(seatToRemove);
     table.seats.forEach((seat, index) => {
       if(seatToRemove.GUID === seat.GUID){
         table.seats.splice(index, 1);

@@ -24,7 +24,6 @@ export class ProductsComponent implements OnInit{
   }
 
   public addProduct(product): void {
-    // console.log('product component ,', products);
     this.addProductAction.emit(product);
   }
 }

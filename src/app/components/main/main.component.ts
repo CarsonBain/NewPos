@@ -13,12 +13,17 @@ export class MainComponent {
   public products = [];
   public selectedProduct: Product;
   public viewTableSummary = false;
+  public tableChange: Table;
 
   constructor( public router: Router
   ) {}
 
   public handleAddProduct(product: Product): void {
     this.selectedProduct = product;
+  }
+  
+  public handleTableChange(table: Table): void{
+    this.tableChange = table;
   }
   
   public toggleTableSummary(): void{
