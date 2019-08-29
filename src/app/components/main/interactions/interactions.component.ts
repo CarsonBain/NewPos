@@ -131,9 +131,6 @@ export class InteractionsComponent implements OnInit {
   //   return table;
   // }
 
-  public onAction(): void {
-  }
-
   public buildTableOptions(): any {
     const seats = [];
 

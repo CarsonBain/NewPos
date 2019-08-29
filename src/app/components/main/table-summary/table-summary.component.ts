@@ -1,6 +1,8 @@
-import { OnInit, EventEmitter, Output, Component, Input } from '@angular/core';
+import { OnInit, EventEmitter, Output, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { Table } from 'src/app/models/table/table.model';
 import { TablesService } from 'src/app/services/table/tables.service';
+import { FormGroup, FormBuilder, FormControl, FormArray} from '@angular/forms';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import * as html2pdf from 'html2pdf.js';
 
 @Component({
@@ -9,44 +11,105 @@ import * as html2pdf from 'html2pdf.js';
   styleUrls: ['./table-summary.component.scss']
 })
 
-export class TableSummaryComponent implements OnInit{
+export class TableSummaryComponent implements OnChanges, OnInit{
   public tableSummaryTable: Table;
-  public viewTableSummary = false;
-  // public testing: Table;
-
-  constructor(public tableService: TablesService){}
-
-  public ngOnInit(){
-  }
-
+  public billItems = [];
+  public billSeats = [];
+  public form: FormGroup;
+  // public checkboxArray = [];
+  
+  constructor(
+    public tableService: TablesService,
+    private formBuilder: FormBuilder,
+    public cdr: ChangeDetectorRef
+    ){}
+  
   @Input() set openTable(table: Table) {
     this.tableSummaryTable = table;
   }
+  
+  get seatCheckboxes() {
+    return this.form.get('seatCheckboxes');
+  }
+  
+  public buildBill(): void{
+    this.findSelectedSeats();
+    console.log('billSeats, ', this.billSeats);
+    this.tableSummaryTable.seats.forEach(seat => {
+      seat.items.forEach(item => {
+        if ( this.billItems.indexOf(item) === -1){
+          item.quantity = 1;
+          this.billItems.push(item);
+        } else {
+          item.quantity ++;
+        }
+      });
+    });
+    
+    this.printBill();
+  }
+  
+  public findSelectedSeats(){
+    const checkboxValues = this.form.controls.seatCheckboxes.value.value;
+    checkboxValues.forEach((checkbox,index) => {
+      if (checkbox === true){
+        this.tableSummaryTable.seats.forEach(seat => {
+          if (seat.number === index + 1){
+            this.billSeats.push(seat);
+          }
+        });
+      }
+    });
+  }
+  
+  public ngOnInit() {
+    // this.form.get('seatCheckboxes').value.valueChanges.subscribe(newVal => console.log(newVal));
+  }
+  
+  public ngOnChanges(){
+    this.buildCheckboxArray();
+    this.buildForm();
+    // this.monitorCheckboxes();
+    // this.form.get('seatCheckboxes').value.valueChanges.subscribe(this.seatCheckboxes = results);
+  }
+  
+  // private monitorCheckboxes(): void {
+  //   this.seatCheckboxes.valueChanges.subscribe(results => {
+  //     this.seatCheckboxes = results;
+  //   });
+  // }
+  
+  private buildForm(): void {
+    this.form = this.formBuilder.group({
+      seatCheckboxes: [this.buildCheckboxArray()],
+    });
+  }
+  
+  private buildCheckboxArray(): FormArray{
+    const checkboxArray = [];
+    this.tableSummaryTable.seats.forEach((seat, index) => {
+     checkboxArray.push(
+        false,
+      );
+    });
+    return this.formBuilder.array(checkboxArray);
+    // console.log(this.checkboxArray)
+  }
+  
+  // private buildDefaultCheckboxes() {
+  //   const arr = this.checkboxArray.map(box => {
+  //     return this.formBuilder.control(box.checked);
+  //   });
+  //   return this.formBuilder.array(arr);
+  // }
 
 
   public printBill(): void{
-    const element = document.getElementById('receipt');
-    html2pdf(element);
-    // const pdf = new jsPDF('p', 'pt', 'letter');
-    // const source = document.getElementById('receipt')
-    // const specialElementHandlers = {'#bypassme': function (element, renderer) {
-    //   return true
-    // }};
-    // const margins = {
-    //     top: 80,
-    //     bottom: 60,
-    //     left: 40,
-    //     width: 522
-    // };
-
-    // pdf.fromHTML(source, margins.left, margins.top, {
-    //   'width': margins.width,
-    //   'elementHandlers': specialElementHandlers
-    // },
-
-    // function (dispose) {
-    //   pdf.save('Test.pdf');
-    // }, margins);
+    this.cdr.detectChanges();
+    setTimeout(() => {
+      const element = document.getElementById('receipt');
+      html2pdf(element);
+    }, 10);
   }
 
 }
