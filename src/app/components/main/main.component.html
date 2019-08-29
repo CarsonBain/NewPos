@@ -1,12 +1,12 @@
 <div class="main-wrap d-flex h-100">
   <div class="interactions-wrapper">
-    <app-interactions (viewTableSummary)="toggleTableSummary($event)" [productAdd]="selectedProduct"></app-interactions>
+    <app-interactions (tableChange)="handleTableChange($event)" (viewTableSummary)="toggleTableSummary($event)" [productAdd]="selectedProduct"></app-interactions>
   </div>
   <div>
     <app-table-summary *ngIf="viewTableSummary"></app-table-summary>
   </div>
   <div class="products-wrapper">
-    <app-products (addProductAction)="handleAddProduct($event)"></app-products>
+    <app-products [selectedSeat]="seatChange" [selectedTable]="tableChange" (addProductAction)="handleAddProduct($event)"></app-products>
   </div>
 </div>
 
