@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 
 export class CategoryNavComponent implements OnInit {
   public categories = [];
+  public activeNavItem = false;
   @Output() action = new EventEmitter<Category>();
 
   constructor(public categoryService: CategoryService, public productService: ProductService) {}
@@ -24,7 +25,9 @@ export class CategoryNavComponent implements OnInit {
   }
 
   public categorySelect(category: Category): void {
+
     const products = this.productService.getAll(category);
+    console.log(products);
     this.action.emit(products);
   }
 }

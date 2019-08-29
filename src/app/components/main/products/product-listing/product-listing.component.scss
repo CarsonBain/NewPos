@@ -4,20 +4,21 @@
 
   .product {
     width: 140px;
-    height: 50px;
+    height: 65px;
     background-color: white;
-    border-radius: 5px;
-    border: 2px solid;
-    
+    border: none;
+    border-top: 4px solid #fcb425;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.08);
+
     &:focus{
       outline: none;
     }
-    
+
     &.selected-product {
       background-color: pink;
     }
   }
-  
+
   .item-count{
     border-radius: 1em;
     background-color: lightblue;
@@ -25,4 +26,17 @@
     width: 36px;
     font-size: 12px;
   }
+}
+
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 65px;
+  grid-gap: 16px;
+}
+
+.product-icon {
+  width: 42px;
+  height: 42px;
+  background-color: #fcb425;
 }

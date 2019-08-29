@@ -1,10 +1,20 @@
 
-<div class="products-container d-flex justify-content-end">
-  <div *ngFor="let product of products">
-    <button (click)="addProduct(product)" [ngClass]="{'selected-product': product.selected}" class="m-1 d-flex product">
-      <span>{{product.name}}</span>
-      <span class="p-1">{{product.price}}</span>
+<div class="products-container d-grid mt-4">
+  <span *ngFor="let product of products">
+    <button (click)="addProduct(product)" [ngClass]="{'selected-product': product.selected}" class="m-1 d-flex align-items-center product w-100">
+      <div class="rounded-circle product-icon mr-2">
+          <svg fill="#fff" height="42px" width="42px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Regular" x="0px" y="0px" viewBox="-9 -8 42 42" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+            <title>wine-glass</title>
+            <g>
+              <path d="M9,24c-0.414,0-0.75-0.336-0.75-0.75S8.587,22.5,9,22.5h2.25v-7.237c-1.49-0.145-2.891-0.715-4.072-1.66   C5.14,11.971,4.05,9.345,4.331,6.744c0-0.049,0.006-0.099,0.018-0.15l0.006-0.052c0.005-0.046,0.01-0.092,0.017-0.138l0.787-5.131   C5.272,0.535,5.896,0,6.641,0h10.716c0.746,0,1.369,0.535,1.482,1.272l0.789,5.131c0.007,0.046,0.012,0.093,0.017,0.139   l0.006,0.051c0.011,0.052,0.017,0.101,0.018,0.15c0.281,2.601-0.808,5.227-2.847,6.859c-1.181,0.945-2.582,1.515-4.072,1.66V22.5   H15c0.414,0,0.75,0.336,0.75,0.75S15.414,24,15,24H9z M5.786,7.5c-0.023,1.91,0.833,3.733,2.33,4.932   c1.107,0.885,2.486,1.373,3.884,1.373c1.398,0,2.778-0.488,3.885-1.373c1.497-1.198,2.352-3.021,2.33-4.931H5.786z M18.049,6   l-0.692-4.5L6.64,1.5L5.951,6H18.049z"/>
+            </g>
+          </svg>
+      </div>
+      <div class="product-info text-left">
+      <div>{{product.name}}</div>
+      <div class="p-1">{{product.price}}</div>
+      </div>
       <span class="item-count" *ngIf="product.quantity > 1">{{product.quantity}}</span>
     </button>
-  </div>
+  </span>
 </div>

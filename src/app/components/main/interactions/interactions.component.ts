@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Table } from 'src/app/models/table/table.model'
 import { Seat } from 'src/app/models/seat/seat.model'
 import { ActivatedRoute } from '@angular/router';
@@ -41,6 +41,8 @@ export class InteractionsComponent implements OnInit {
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
+  @Output() selectedTable = new EventEmitter<Table>();
+
   constructor(
     private route: ActivatedRoute,
     public tableService: TablesService,
@@ -80,6 +82,8 @@ export class InteractionsComponent implements OnInit {
   public setOpenTable(table: Table): void {
     this.openTable = table;
     this.openTableSeats = this.openTable.seats;
+    this.selectedTable.emit(table);
+
     // close other tables
   }
 

@@ -1,6 +1,7 @@
 import { Component, } from '@angular/core';
 import { Product } from '../../models/product/product.model';
 import { Router } from '@angular/router';
+import { Table } from 'src/app/models/table/table.model';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 export class MainComponent {
   public products = [];
   public selectedProduct: Product;
+  public selectedTable: Table;
+
 
   constructor( public router: Router
   ) {}
@@ -18,6 +21,10 @@ export class MainComponent {
   public handleAddProduct(product: Product): void {
     console.log(product)
     this.selectedProduct = product;
+  }
+
+  public selectTable(table) {
+    this.selectedTable = table;
   }
 }
 

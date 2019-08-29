@@ -1,6 +1,7 @@
 import { OnInit, EventEmitter, Output, Component, Input } from '@angular/core';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/product/product.model';
+import { Table } from 'src/app/models/table/table.model';
 
 @Component({
   selector: 'app-products',
@@ -11,6 +12,14 @@ import { Product } from 'src/app/models/product/product.model';
 export class ProductsComponent implements OnInit{
   public products = [];
   @Output() addProductAction = new EventEmitter<Product>();
+  // @Input() set currentTable(table) {
+  //   if (table) {
+  //   this.openTable = table;
+  //   console.log(table);
+  //   }
+  // };
+
+  public openTable: Table;
 
   constructor(public productService: ProductService) {}
 
