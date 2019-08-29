@@ -40,12 +40,11 @@ export class InteractionsComponent implements OnInit {
   public displayErrors = false;
   @Output() viewTableSummary = new EventEmitter<boolean>();
   @Output() tableChange = new EventEmitter<Table>();
+  @Output() seatChange = new EventEmitter<Seat>();
 
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
-  @Output() tableChange = new EventEmitter<Table>();
-  @Output() seatChange = new EventEmitter<Seat>();
 
   constructor(
     private route: ActivatedRoute,
@@ -132,9 +131,6 @@ export class InteractionsComponent implements OnInit {
 
   //   return table;
   // }
-
-  public onAction(): void {
-  }
 
   public buildTableOptions(): any {
     const seats = [];

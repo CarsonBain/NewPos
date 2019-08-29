@@ -2,6 +2,13 @@
   width: 336px;
 }
 
+.seat-row {
+  border-bottom: 1px solid black;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+
 .receipt-body {
   width: 100%;
   height: 700px;
@@ -14,6 +21,16 @@
   tbody{
     width: 100%;
     display: table;
+  }
+  
+
+  
+  .seat-item-container {
+    width: 400px;
+  }
+  
+  .item-row {
+    padding-left: 20px;
   }
   
 }
