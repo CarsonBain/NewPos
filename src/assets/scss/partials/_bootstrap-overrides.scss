@@ -251,15 +251,17 @@ ngb-datepicker {
       position: relative;
 
       button {
-        height: 100px;
+
 
         &[aria-expanded="true"] {
+          background-color: #edefff;
+
           .seat-count {
-            color: $pink;
-            background-color: rgba(172, 86, 179, 0.24);
+            color: $blue;
+            background-color: rgba(18, 38, 170, 0.25);
           }
           .table-icon {
-            fill: $pink;
+            fill: $blue;
           }
         }
 
@@ -282,7 +284,6 @@ ngb-datepicker {
   }
   .card-header {
     button.btn-link {
-      height: 64px;
       font-size: 15px;
       border-radius: 0;
       width: 100%;
@@ -307,4 +308,25 @@ ngb-datepicker {
 .btn:focus, .btn.focus {
   outline: none;
   box-shadow: none;
+}
+
+.table-summary-container {
+  .card {
+    height: 68px;
+
+    button.btn-link {
+      width: 100%;
+      border-bottom: 1px solid #e1e1e1;
+      border-radius: 0;
+
+      &[aria-expanded="true"] {
+
+        background-color: $blue-lighter;
+
+        .seat-number {
+          background-color: #fff;
+        }
+    }
+  }
+  }
 }

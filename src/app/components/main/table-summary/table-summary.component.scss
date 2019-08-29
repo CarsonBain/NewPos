@@ -1,5 +1,7 @@
+@import 'component-includes';
+
 .table-summary-container{
-  width: 336px;
+  padding: 48px;
 }
 
 .receipt-body {
@@ -10,10 +12,38 @@
   color: black;
   padding: 0;
   border: 1px solid black;
-  
+
   tbody{
     width: 100%;
     display: table;
   }
-  
+
+}
+.heading {
+  font-weight: 600;
+}
+
+.main-wrap {
+  width: 325px;
+}
+
+.item {
+  font-size: 13px;
+}
+
+.seat-number {
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  background-color: $blue-lighter;
+  color: $blue;
+  font-weight: 600;
+}
+
+.item-name {
+  width: 155px;
+}
+
+.seat-info {
+  font-size: 14px;
 }
