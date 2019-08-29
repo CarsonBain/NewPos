@@ -81,11 +81,12 @@ export class ProductService {
     }
   ];
 
-  public getAll(category?: Category): any {
+  public getAll(category?): any {
+    console.log(category);
     if (category) {
       const filteredResults = [];
       this.products.forEach(product => {
-        if (product.posCategory === category.name) {
+        if (product.posCategory === category) {
           filteredResults.push(product);
         }
       });

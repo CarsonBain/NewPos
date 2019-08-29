@@ -1,3 +1,9 @@
-    <app-category-nav (action)="filterProducts($event)"></app-category-nav>
-    <app-product-search (productFound)="filterProducts($event)"></app-product-search>
+   <div class="p-5 h-100">
+     <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap">
+       <div class="heading text-uppercase secondary-font"><span *ngIf="tableSummaryTable">Table {{tableSummaryTable.number}}<span *ngIf="seatSummarySeat">, Seat {{seatSummarySeat.number}}</span></span>
+        <span *ngIf="!tableSummaryTable">Select a table</span></div>
+        <app-product-search (productFound)="filterProducts($event)"></app-product-search>
+     </div>
+   <app-category-nav (action)="filterProducts($event)"></app-category-nav>
     <app-products-listing (addProductAction)="addProduct($event)" [products]="products"></app-products-listing>
+    </div>

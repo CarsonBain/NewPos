@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Table } from 'src/app/models/table/table.model'
 import { Seat } from 'src/app/models/seat/seat.model'
 import { ActivatedRoute } from '@angular/router';
@@ -44,6 +44,9 @@ export class InteractionsComponent implements OnInit {
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
+  @Output() tableChange = new EventEmitter<Table>();
+  @Output() seatChange = new EventEmitter<Seat>();
+
   constructor(
     private route: ActivatedRoute,
     public tableService: TablesService,
@@ -81,25 +84,27 @@ export class InteractionsComponent implements OnInit {
   }
 
   public setOpenTable(table: Table): void {
-    // this.openTable = table;
     this.openTable = this.tableService.setOpenTable(table);
     this.openTableSeats = this.openTable.seats;
+    if (table) {
     this.tableChange.emit(table);
-    // close other tables
+    }
   }
 
   public setOpenSeat(seat: Seat): void{
     this.openSeat = this.seatService.setOpenSeat(seat);
     // this.openSeat = seat;
     this.openSeatItems = this.openSeat.items;
+    this.seatChange.emit(seat);
+    console.log(seat);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.
   }
-  
+
   public toggleTableSummary(): void{
     this.viewTableSummary.emit();
   }
-  
+
   public removeSeat(seat: Seat){
     this.seatService.removeSeat(seat, this.openTable);
     // Bug if you delete seat above the open seat, blue doesn't follow open seat.
@@ -122,7 +127,7 @@ export class InteractionsComponent implements OnInit {
   //     totalItems: 0,
   //     subtotal: 0
   //   };
-    
+
   //   this.tableService.createTable(table);
 
   //   return table;
@@ -173,7 +178,7 @@ export class InteractionsComponent implements OnInit {
       this.form.controls.newTableNumber.setValue('');
       this.form.controls.newTableSeats.setValue('1');
       this.toggleAddTableModal();
-      
+
       // Figure out how to open accordions to do this.
       this.setOpenTable(newTable);
       this.setOpenSeat(this.openTable.seats[0]);
