@@ -10,5 +10,6 @@
   &.open {
     left: 336px;
     width: calc(100% - 400px);
+    overflow: scroll;
   }
 }

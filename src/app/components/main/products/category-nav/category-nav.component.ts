@@ -26,7 +26,7 @@ export class CategoryNavComponent implements OnInit {
     this.categories = this.categoryService.getAll();
   }
 
-  public categorySelect(category: Category): void {
+  public categorySelect(category): void {
     this.activeCategory = category;
     const products = this.productService.getAll(category);
     this.action.emit(products);
