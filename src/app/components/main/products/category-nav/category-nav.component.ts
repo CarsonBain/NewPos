@@ -19,6 +19,7 @@ export class CategoryNavComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getCategories();
+    this.categorySelect(this.categories[0].name)
   }
 
   public getCategories(): void {

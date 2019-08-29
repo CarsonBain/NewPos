@@ -31,6 +31,7 @@ export class ProductsComponent implements OnInit{
   }
 
   @Input() set selectedSeat(seat: Seat) {
+    console.log('hitting');
     if(seat) {
     this.seatSummarySeat = seat;
     }

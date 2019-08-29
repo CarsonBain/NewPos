@@ -103,6 +103,7 @@ export class TableSummaryComponent implements OnChanges, OnInit{
   //   return this.formBuilder.array(arr);
   // }
 
+
   public printBill(): void{
     this.cdr.detectChanges();
     setTimeout(() => {

@@ -45,7 +45,6 @@ export class InteractionsComponent implements OnInit {
   // public table1 = [this.seat1, this.seat2];
   public serverTables = [];
 
-
   constructor(
     private route: ActivatedRoute,
     public tableService: TablesService,
@@ -93,8 +92,8 @@ export class InteractionsComponent implements OnInit {
   public setOpenSeat(seat: Seat): void{
     this.openSeat = this.seatService.setOpenSeat(seat);
     // this.openSeat = seat;
+    console.log(this.openSeat);
     this.openSeatItems = this.openSeat.items;
-    this.seatChange.emit(seat);
     console.log(seat);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.

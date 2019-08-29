@@ -4,3 +4,11 @@
 .interactions-wrapper {
   width: 336px;
 }
+.table-summary {
+  background-color: #fff;
+
+  &.open {
+    left: 336px;
+    width: calc(100% - 400px);
+  }
+}
