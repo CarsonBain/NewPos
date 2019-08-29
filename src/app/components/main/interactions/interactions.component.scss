@@ -1,5 +1,9 @@
 @import 'component-includes';
 
+button:focus{
+  outline: none;
+}
+
 .interactions-wrap {
   width: 336px;
   background-color: #f3f5f7;

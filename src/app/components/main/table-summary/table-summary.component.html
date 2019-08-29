@@ -1,0 +1,11 @@
+<div>Table Summary</div>
+<div class="table-summary-container">
+  <div *ngFor="let seat of openTable.seats">
+    <input type="checkbox">
+    <span>Seat {{seat.number}}</span>
+    <div *ngFor="let item of seat.items">
+    <span (click)="selectItem(item)">{{item.name}}</span>
+  </div>
+</div>
+
+<button>Print Bill</button>

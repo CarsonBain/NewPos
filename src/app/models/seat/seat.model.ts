@@ -5,6 +5,7 @@ export class Seat {
   items: Product[];
   subtotal?: number;
   tableNumber: number;
+  GUID: string;
 
   constructor(args: Seat) {
     Object.assign(this, args);

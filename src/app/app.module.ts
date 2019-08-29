@@ -9,7 +9,7 @@ import { InteractionsComponent } from './components/main/interactions/interactio
 import { ProductsListingComponent } from './components/main/products/product-listing/product-listing.component';
 import { CategoryNavComponent } from './components/main/products/category-nav/category-nav.component';
 import { ProductSearchComponent } from './components/main/products/product-search/product-search.component';
-import { MenuOptionsComponent } from './components/main/menu-options/menu-options.component';
+import { TableSummaryComponent } from './components/main/table-summary/table-summary.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
 import { ProductsComponent } from './components/main/products/products.component';
@@ -21,8 +21,8 @@ import { TextInputComponent } from './shared/text-input/text-input.component';
     LoginComponent,
     InteractionsComponent,
     ProductsListingComponent,
+    TableSummaryComponent,
     ProductsComponent,
-    MenuOptionsComponent,
     CategoryNavComponent,
     MainComponent,
     ProductSearchComponent,

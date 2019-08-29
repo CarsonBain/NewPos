@@ -1,9 +1,9 @@
 <div class="main-wrap d-flex h-100">
   <div class="interactions-wrapper">
-    <app-interactions [productAdd]="selectedProduct"></app-interactions>
+    <app-interactions (viewTableSummary)="toggleTableSummary($event)" [productAdd]="selectedProduct"></app-interactions>
   </div>
-  <div class="d-flex justify-content-between flex-column">
-    <app-menu-options></app-menu-options>
+  <div>
+    <app-table-summary *ngIf="viewTableSummary"></app-table-summary>
   </div>
   <div class="products-wrapper">
     <app-products (addProductAction)="handleAddProduct($event)"></app-products>
