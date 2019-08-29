@@ -85,6 +85,7 @@ public tables = [
   //   lastItemOrdered: new Date().toLocaleTimeString()
   // },
 ];
+  public openTable: Table;
 
   public getServerTables(serverId: number) {
     const serverTables = this.tables.filter(table => {
@@ -96,6 +97,26 @@ public tables = [
     });
 
     return serverTables;
+  }
+  
+  public getTables(){
+    return this.tables;
+  }
+  
+  public createTable(tableOptions): Table{
+    const table = {
+      number: tableOptions.number,
+      serverId: 1,
+      seats: tableOptions.seats,
+      billPrinted: false,
+      createdAt: new Date().toLocaleTimeString(),
+      lastItemOrdered: new Date().toLocaleTimeString(),
+      totalItems: 0,
+      subtotal: 0
+    };
+    this.tables.push(table);
+    
+    return table;
   }
 
   public getTableItemQuantity(table: Table): void {
@@ -112,5 +133,14 @@ public tables = [
       subTotal += seat.subtotal;
     });
     table.subtotal = subTotal;
+  }
+  
+  public setOpenTable(table): Table {
+    this.openTable = table;
+    return this.openTable;
+  }
+  
+  public getOpenTable(): Table {
+    return this.openTable;
   }
 }
