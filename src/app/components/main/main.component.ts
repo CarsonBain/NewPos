@@ -17,6 +17,7 @@ export class MainComponent {
   public viewTableSummary = false;
   public tableChange: Table;
   public seatChange: Seat;
+  public itemsSent;
 
   constructor( public router: Router
   ) {}
@@ -34,6 +35,10 @@ export class MainComponent {
 
   public handleSeatChange(seat: Seat): void{
     this.seatChange = seat;
+  }
+  
+  public handleItemsSent(event): void{
+    this.itemsSent = event;
   }
 }
 

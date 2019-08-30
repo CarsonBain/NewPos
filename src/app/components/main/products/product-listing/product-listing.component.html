@@ -20,7 +20,11 @@
       <div>{{product.name}}</div>
       <div>{{product.price}}</div>
       </div>
-      <span *ngIf="" class="item-count"></span>
     </button>
+    <span *ngFor="let item of tempSeatItems">
+        <div *ngIf="item.name === product.name">
+          <div class="item-count">{{item.count}}</div>
+        </div>
+      </span>
   </span>
 </div>

@@ -24,6 +24,8 @@ export class TableSummaryComponent implements OnChanges, OnInit{
   public formSubmitted = false;  
   public seatNumberError = false;
   public displayErrors = false;
+  public tempItemCount = 0;
+  @Output() itemsSent = new EventEmitter<any>();
   
   constructor(
     public tableService: TablesService,
@@ -43,6 +45,11 @@ export class TableSummaryComponent implements OnChanges, OnInit{
   
   public open(content) {
     this.modalService.open(content, { windowClass: 'extra-small' })
+  }
+  
+  public sendTempItems(event){
+    this.tempItemCount = 0;
+    this.itemsSent.emit(event)
   }
   
   public buildBill(): void{
@@ -150,7 +157,8 @@ export class TableSummaryComponent implements OnChanges, OnInit{
   }
   
   public ngOnInit() {
-    this.buildForm();    
+    this.buildForm();
+    this.tempItemCount = this.tableService.getTempItemsCount()
   }
   
   

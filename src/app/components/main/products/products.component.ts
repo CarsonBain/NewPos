@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit{
 
   public tableSummaryTable: Table;
   public seatSummarySeat: Seat;
+  public sendItems;
 
   public products = [];
   @Output() addProductAction = new EventEmitter<Product>();
@@ -25,8 +26,12 @@ export class ProductsComponent implements OnInit{
 
   @Input() set selectedTable(table: Table) {
     if(table) {
-    this.tableSummaryTable = table;
+      this.tableSummaryTable = table;
     }
+  }
+  
+  @Input() set itemsSent(event){
+    this.sendItems = event;
   }
 
   @Input() set selectedSeat(seat: Seat) {

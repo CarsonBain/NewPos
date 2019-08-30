@@ -119,7 +119,7 @@ export class InteractionsComponent implements OnInit {
         GUID: this.guidService.generateGUID(),
         selected: false,
         readyForBill: false,
-        billItems: []
+        billItems: [],
       };
       seats.push(seat);
     }

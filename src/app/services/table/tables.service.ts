@@ -14,6 +14,7 @@ export class TablesService {
     public guidService: GUIDService,
   ) {}
 
+  public tempSeatItems = [];
 public tables = [
   // {
   //   number: 100,
@@ -153,5 +154,17 @@ public tables = [
   // }
   public getOpenTable(): Table {
     return this.openTable;
+  }
+  
+  public captureTempItems(tempSeatItems) {
+    this.tempSeatItems = tempSeatItems;
+  }
+  
+  public getTempItemsCount() {
+    let tempItemCount = 0;
+    this.tempSeatItems.forEach(item => {
+      tempItemCount = tempItemCount + item.count;
+    });
+    return tempItemCount;
   }
 }
