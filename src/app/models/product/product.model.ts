@@ -8,6 +8,7 @@ export class Product {
   sku: string;
   selected: boolean;
   quantity: number;
+  seatNumber: number;
 
   constructor(args: Product) {
     Object.assign(this, args);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SeatService } from 'src/app/services/seat/seat.service'
 import { Table } from 'src/app/models/table/table.model';
 import { Observable, of } from 'rxjs';
+import { GUIDService } from '../guid/guid.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Observable, of } from 'rxjs';
 export class TablesService {
 
   constructor(
-    public seatService: SeatService
+    public seatService: SeatService,
+    public guidService: GUIDService,
   ) {}
 
 public tables = [
@@ -109,7 +111,8 @@ public tables = [
   // }
   
   public createTable(tableOptions): Table{
-    const table = {
+    const newTableBuild = {
+      id: this.guidService.generateGUID(),
       number: tableOptions.number,
       serverId: 1,
       seats: tableOptions.seats,
@@ -119,9 +122,9 @@ public tables = [
       totalItems: 0,
       subtotal: 0
     };
-    this.tables.push(table);
-    
-    return table;
+    const newTable = new Table(newTableBuild);
+    this.tables.push(newTable);
+    return newTable;
   }
 
   public getTableItemQuantity(table: Table): void {

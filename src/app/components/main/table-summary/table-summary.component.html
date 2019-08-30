@@ -1,73 +1,71 @@
-<!-- <div>Table Summary</div>
-<form [formGroup]="form">
-  <div class="table-summary-container">
-    <div *ngFor="let checkbox of seatCheckboxes.value.controls;let i = index">
-      <input type="checkbox" id="checkbox[i]" [formControl]="checkbox">
-      <span>
-       Seat {{i + 1}} {{checkbox.name}}
-      </span>
-  <div *ngFor="let item of seat.items">
-        <span (click)="selectItem(item)">
-          {{item.name}}
-        </span>
-      </div> -->
-    <!-- </div>
-  </div>
-</form> -->
-
 <div class="table-summary-container h-100">
-<!-- <button type="button" class="close px-3 py-0 btn position-absolute" aria-label="Close" (click)="!viewSummary">
-    <svg xmlns="http://www.w3.org/2000/svg"height="16px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000" fill="#b5b5b5" enable-background="new 0 0 1000 1000" xml:space="preserve">
-      <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
-      <g><path d="M585.8,500l385.9-385.9c24.5-24.5,24.5-61.3,0-85.8c-24.5-24.5-61.3-24.5-85.8,0L500,414.3L114.1,28.4c-24.5-24.5-61.2-24.5-85.8,0c-24.5,24.5-24.5,61.3,0,85.8L411.2,500L28.4,885.9c-24.5,24.5-24.5,61.3,0,85.8c9.2,12.3,27.6,18.4,42.9,18.4c15.3,0,30.6-6.1,42.9-18.4L500,585.8l385.9,385.9c12.3,12.3,27.6,18.4,42.9,18.4s30.6-6.1,42.9-18.4c24.5-24.5,24.5-61.3,0-85.8L585.8,500z"/></g>
-      </svg>
-</button> -->
-<div class="header-wrap p-5">
-   <div class="text-uppercase secondary-font">Table</div>
-</div>
-<div class="d-flex">
-<div class="main-wrap">
-<ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
-    <ngb-panel *ngFor="let seat of tableSummaryTable.seats; let i = index" id="ngb-panel-table-{{i}}">
-        <ng-template ngbPanelTitle>
-          <div class="d-flex justify-content-between align-items-center p-3 main position-relative">
-            <div class="d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="#1226aa" id="Bold" height="24px" width="24px" viewBox="0 0 24 24"><title>chair</title><path d="M18.521,10.775a.255.255,0,0,1-.021-.1V1a1,1,0,0,0-2,0v.5A.5.5,0,0,1,16,2H8a.5.5,0,0,1-.5-.5V1a1,1,0,0,0-2,0v9.673a.255.255,0,0,1-.021.1C5.24,11.311,3.5,15.228,3.5,15.5v1A.5.5,0,0,0,4,17H20a.5.5,0,0,0,.5-.5v-1C20.5,15.228,18.76,11.311,18.521,10.775ZM16.5,10a.5.5,0,0,1-.5.5H8a.5.5,0,0,1-.5-.5V7A.5.5,0,0,1,8,6.5h8a.5.5,0,0,1,.5.5Z"/><path d="M5.5,19a.5.5,0,0,0-.5-.5H4a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0Z"/><path d="M20,18.5H19a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0V19A.5.5,0,0,0,20,18.5Z"/></svg>
-            <div class="ml-1 rounded-circle seat-number secondary-font">{{seat.number}}</div>
-            </div>
-            <div class="d-flex seat-info align-items-center">
-            <div class="mr-1">({{seat.items.length}} items)</div>
-            <div>{{seat.subtotal | currency}}</div>
-            </div>
-            <div class="arrow-down"></div>
-          </div>
-
-        </ng-template>
-        <ng-template ngbPanelContent>
-            <div *ngFor="let item of seat.items" class="justify-content-between d-flex p-3 item">
-              <div class="item-name">{{item.name}}</div>
-              <div>{{item.price | currency}}</div>
-          </div>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
-
-
+  <!-- <button type="button" class="close px-3 py-0 btn position-absolute" aria-label="Close" (click)="!viewSummary">
+      <svg xmlns="http://www.w3.org/2000/svg"height="16px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000" fill="#b5b5b5" enable-background="new 0 0 1000 1000" xml:space="preserve">
+        <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+        <g><path d="M585.8,500l385.9-385.9c24.5-24.5,24.5-61.3,0-85.8c-24.5-24.5-61.3-24.5-85.8,0L500,414.3L114.1,28.4c-24.5-24.5-61.2-24.5-85.8,0c-24.5,24.5-24.5,61.3,0,85.8L411.2,500L28.4,885.9c-24.5,24.5-24.5,61.3,0,85.8c9.2,12.3,27.6,18.4,42.9,18.4c15.3,0,30.6-6.1,42.9-18.4L500,585.8l385.9,385.9c12.3,12.3,27.6,18.4,42.9,18.4s30.6-6.1,42.9-18.4c24.5-24.5,24.5-61.3,0-85.8L585.8,500z"/></g>
+        </svg>
+  </button> -->
+  <div class="header-wrap p-5">
+  <div class="text-uppercase secondary-font">Table</div>
   </div>
+  <div class="d-flex">
+    <div class="main-wrap">
+      <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+        <ngb-panel *ngFor="let seat of tableSummaryTable.seats; let i = index" id="ngb-panel-table-{{i}}">
+            <ng-template ngbPanelTitle>
+              <div class="d-flex justify-content-between align-items-center p-3 main position-relative">
+                <div class="d-flex align-items-center">
+                  <input type="checkbox" id="{{seat.number}}" (click)="markSeatAsSelected(seat)">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="#1226aa" id="Bold" height="24px" width="24px" viewBox="0 0 24 24"><title>chair</title><path d="M18.521,10.775a.255.255,0,0,1-.021-.1V1a1,1,0,0,0-2,0v.5A.5.5,0,0,1,16,2H8a.5.5,0,0,1-.5-.5V1a1,1,0,0,0-2,0v9.673a.255.255,0,0,1-.021.1C5.24,11.311,3.5,15.228,3.5,15.5v1A.5.5,0,0,0,4,17H20a.5.5,0,0,0,.5-.5v-1C20.5,15.228,18.76,11.311,18.521,10.775ZM16.5,10a.5.5,0,0,1-.5.5H8a.5.5,0,0,1-.5-.5V7A.5.5,0,0,1,8,6.5h8a.5.5,0,0,1,.5.5Z"/><path d="M5.5,19a.5.5,0,0,0-.5-.5H4a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0Z"/><path d="M20,18.5H19a.5.5,0,0,0-.5.5v4a1,1,0,0,0,2,0V19A.5.5,0,0,0,20,18.5Z"/></svg>
+                  <div class="ml-1 rounded-circle seat-number secondary-font">{{seat.number}}</div>
+                </div>
+                <div class="d-flex seat-info align-items-center">
+                  <div class="mr-1">({{seat.items.length}} items)</div>
+                  <div>{{seat.subtotal | currency}}</div>
+                </div>
+                <div class="arrow-down"></div>
+              </div>
 
-  <div class="sidebar p-2 ml-4">
-      <div class="header">
-        Guest
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <div [ngClass]="{'selected-item': item.selected}"(click)="selectItem(item)" *ngFor="let item of seat.items" class="justify-content-between d-flex p-3 item">
+                  <div class="item-name">{{item.name}}</div>
+                  <div>{{item.price | currency}}</div>
+                  <div (click)="open(moveItem)">move</div>
+                  <div (click)="removeItem(item, seat)">delete</div>
+              </div>
+            </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+      <div class="sub-pricing-container">
+        <div class="d-flex py-1 pricing-row-long justify-content-between">
+          <span>Subtotal</span>{{tableSummaryTable.subtotal | currency}}
+        </div>
+        <div class="d-flex py-1 pricing-row justify-content-between">        
+          <span>PST</span>2.00
+        </div>        
+        <div class="d-flex py-1 pricing-row justify-content-between">        
+          <span>GST</span>5.00
+        </div>
       </div>
-      <button class="btn mt-2">Add Note</button>
-      <button class="btn mt-2">Link to Contact</button>
+      <div class="d-flex py-1 pricing-row-total justify-content-between">        
+        <span>Total</span>{{tableSummaryTable.subtotal | currency}}
+      </div>
     </div>
+
+      <div class="sidebar p-2 ml-4">
+        <div class="header">
+          Guest
+        </div>
+        <button class="btn mt-2">Add Note</button>
+        <button class="btn mt-2">Link to Contact</button>
+      </div>
 
   </div>
 
   <div class="footer d-flex justify-content-between">
     <div>
-      <button class="btn">Print Selected</button>
+      <button (click)="buildBill();" class="btn">Print Selected</button>
       <button class="btn">Take Payment</button>
     </div>
     <button class="p-2 btn primary ml-auto">Send x new items</button>
@@ -75,13 +73,8 @@
 
 </div>
 
-<!-- <button (click)="printBill()">Print Bill</button> -->
-
-
-<!-- <button (click)="buildBill();">PDF</button>
-
 <div class="d-none">
-  <div id="receipt">
+  <div id="receipt" class='font-weight-light'>
 
     <div>
       <div class="d-flex justify-content-between">
@@ -94,19 +87,103 @@
       </div>
       <div class="d-flex justify-content-between">
         <div>Sale</div>
-        <div>Served by: Jolie</div>
+        <div>Served by: Jon</div>
       </div>
 
       <div *ngFor="let seat of billSeats">
         <div class="py-2 seat-row">Seat {{seat.number}}</div>
-        <div class="d-flex justify-content-between" *ngFor="let item of billItems">
+        <div class="d-flex justify-content-between" *ngFor="let item of seat.billItems">
           <div>- {{item.name}} x {{item.quantity}} </div>
           <div>{{item.price * item.quantity}}</div>
         </div>
-        <div class="py-2 d-flex justify-content-end font-weight-bold">
-          Subtotal{{seat.subtotal | currency}}
+        <div class="py-2 d-flex justify-content-end flex-column font-weight-normal">
+          <div class="py-2 d-flex justify-content-end font-weight-normal">
+            SubTotal <span class="px-1">{{seat.subtotal | currency}}</span>
+          </div>
+          <!-- <div class="py-2 d-flex justify-content-end font-weight-normal">
+            GST <span class="px-1">$1.00</span>
+          </div>
+          <div class="py-2 d-flex justify-content-end font-weight-normal">
+            PST <span class="px-1">$1.00</span>
+          </div> -->
         </div>
       </div>
+      <div class="py-2 d-flex table-total justify-content-end font-weight-normal">
+        SubTotal <span class="px-1">{{billTotal | currency}}</span>
+      </div><div class="py-2 d-flex justify-content-end font-weight-normal">
+        GST <span class="px-1">$2.00</span>
+      </div><div class="py-2 d-flex justify-content-end font-weight-normal">
+        PST <span class="px-1">$2.00</span>
+      </div>
+      <div class="py-2 d-flex justify-content-end font-weight-normal">
+        Total <span class="px-1">{{billTotal + 4| currency}}</span>
+      </div>
 
-  </div> -->
-  <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+<ng-template #moveItem let-modal class="p-2 modal-container">
+  <div class="modal-header d-flex align-items-center position-relative">
+    <h4 class="modal-title text-uppercase secondary-font" id="modal-basic-title">Seat Destination</h4>
+    <button type="button" class="close px-3 py-0 btn position-absolute" aria-label="Close" (click)="modal.dismiss()">
+        <svg xmlns="http://www.w3.org/2000/svg"height="16px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000" fill="#b5b5b5" enable-background="new 0 0 1000 1000" xml:space="preserve">
+          <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+          <g><path d="M585.8,500l385.9-385.9c24.5-24.5,24.5-61.3,0-85.8c-24.5-24.5-61.3-24.5-85.8,0L500,414.3L114.1,28.4c-24.5-24.5-61.2-24.5-85.8,0c-24.5,24.5-24.5,61.3,0,85.8L411.2,500L28.4,885.9c-24.5,24.5-24.5,61.3,0,85.8c9.2,12.3,27.6,18.4,42.9,18.4c15.3,0,30.6-6.1,42.9-18.4L500,585.8l385.9,385.9c12.3,12.3,27.6,18.4,42.9,18.4s30.6-6.1,42.9-18.4c24.5-24.5,24.5-61.3,0-85.8L585.8,500z"/></g>
+          </svg>
+    </button>
+  </div>
+  <div class="modal-body pt-0">
+    <div *ngIf="formSubmitted">
+      <div *ngIf="(form.invalid)" class="error px-3 py-2">
+        <!-- <div *ngIf="tableNumberError">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+              <title>road-sign-warning</title>
+              <g>
+                <path d="M2.251,23.249c-0.379,0-0.755-0.097-1.087-0.28c-1.086-0.6-1.482-1.971-0.882-3.057l9.747-17.995   c0.207-0.376,0.512-0.681,0.884-0.887c0.334-0.184,0.709-0.281,1.086-0.281c0.211,0,0.421,0.03,0.626,0.089   c0.578,0.166,1.056,0.548,1.346,1.074l9.753,18.005c0.181,0.328,0.277,0.703,0.277,1.082c0,1.241-1.009,2.25-2.25,2.25H2.251z    M12,2.249c-0.127,0-0.248,0.032-0.361,0.094c-0.124,0.068-0.225,0.17-0.294,0.294L1.598,20.632   c-0.099,0.179-0.122,0.382-0.066,0.575c0.056,0.193,0.182,0.352,0.357,0.449c0.111,0.061,0.236,0.094,0.362,0.094h19.5   c0.414,0,0.75-0.337,0.75-0.75c0-0.126-0.032-0.251-0.094-0.362L12.655,2.633c-0.095-0.172-0.254-0.299-0.446-0.354   C12.14,2.259,12.07,2.249,12,2.249z"/>
+                <path d="M12.001,19.499c-0.044,0-0.088-0.004-0.13-0.011c-0.513-0.06-0.923-0.47-0.983-0.983c-0.008-0.043-0.012-0.087-0.012-0.131   s0.004-0.088,0.012-0.131c0.06-0.513,0.47-0.922,0.983-0.982c0.042-0.008,0.086-0.011,0.131-0.011s0.088,0.004,0.13,0.011   c0.513,0.06,0.923,0.47,0.983,0.983c0.008,0.042,0.011,0.086,0.011,0.131s-0.004,0.088-0.011,0.131   c-0.06,0.513-0.47,0.923-0.983,0.983C12.089,19.496,12.046,19.499,12.001,19.499z"/>
+                <path d="M12.001,15.749c-0.414,0-0.75-0.336-0.75-0.75v-6.75c0-0.414,0.336-0.75,0.75-0.75c0.413,0,0.75,0.336,0.75,0.75v6.75   C12.751,15.413,12.415,15.749,12.001,15.749z"/>
+              </g>
+            </svg>
+            Sorry, that table number already exists!
+        </div> -->
+        <!-- <div *ngIf="formSubmitted && newTableNumber.invalid">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+              <title>road-sign-warning</title>
+              <g>
+                <path d="M2.251,23.249c-0.379,0-0.755-0.097-1.087-0.28c-1.086-0.6-1.482-1.971-0.882-3.057l9.747-17.995   c0.207-0.376,0.512-0.681,0.884-0.887c0.334-0.184,0.709-0.281,1.086-0.281c0.211,0,0.421,0.03,0.626,0.089   c0.578,0.166,1.056,0.548,1.346,1.074l9.753,18.005c0.181,0.328,0.277,0.703,0.277,1.082c0,1.241-1.009,2.25-2.25,2.25H2.251z    M12,2.249c-0.127,0-0.248,0.032-0.361,0.094c-0.124,0.068-0.225,0.17-0.294,0.294L1.598,20.632   c-0.099,0.179-0.122,0.382-0.066,0.575c0.056,0.193,0.182,0.352,0.357,0.449c0.111,0.061,0.236,0.094,0.362,0.094h19.5   c0.414,0,0.75-0.337,0.75-0.75c0-0.126-0.032-0.251-0.094-0.362L12.655,2.633c-0.095-0.172-0.254-0.299-0.446-0.354   C12.14,2.259,12.07,2.249,12,2.249z"/>
+                <path d="M12.001,19.499c-0.044,0-0.088-0.004-0.13-0.011c-0.513-0.06-0.923-0.47-0.983-0.983c-0.008-0.043-0.012-0.087-0.012-0.131   s0.004-0.088,0.012-0.131c0.06-0.513,0.47-0.922,0.983-0.982c0.042-0.008,0.086-0.011,0.131-0.011s0.088,0.004,0.13,0.011   c0.513,0.06,0.923,0.47,0.983,0.983c0.008,0.042,0.011,0.086,0.011,0.131s-0.004,0.088-0.011,0.131   c-0.06,0.513-0.47,0.923-0.983,0.983C12.089,19.496,12.046,19.499,12.001,19.499z"/>
+                <path d="M12.001,15.749c-0.414,0-0.75-0.336-0.75-0.75v-6.75c0-0.414,0.336-0.75,0.75-0.75c0.413,0,0.75,0.336,0.75,0.75v6.75   C12.751,15.413,12.415,15.749,12.001,15.749z"/>
+              </g>
+            </svg>
+            Table number is required
+        </div> -->
+        <!-- <div *ngIf="formSubmitted && newTableSeats.invalid">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" fill="#c72c4a" viewBox="-14 -12 52 52" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+            <title>road-sign-warning</title>
+            <g>
+              <path d="M2.251,23.249c-0.379,0-0.755-0.097-1.087-0.28c-1.086-0.6-1.482-1.971-0.882-3.057l9.747-17.995   c0.207-0.376,0.512-0.681,0.884-0.887c0.334-0.184,0.709-0.281,1.086-0.281c0.211,0,0.421,0.03,0.626,0.089   c0.578,0.166,1.056,0.548,1.346,1.074l9.753,18.005c0.181,0.328,0.277,0.703,0.277,1.082c0,1.241-1.009,2.25-2.25,2.25H2.251z    M12,2.249c-0.127,0-0.248,0.032-0.361,0.094c-0.124,0.068-0.225,0.17-0.294,0.294L1.598,20.632   c-0.099,0.179-0.122,0.382-0.066,0.575c0.056,0.193,0.182,0.352,0.357,0.449c0.111,0.061,0.236,0.094,0.362,0.094h19.5   c0.414,0,0.75-0.337,0.75-0.75c0-0.126-0.032-0.251-0.094-0.362L12.655,2.633c-0.095-0.172-0.254-0.299-0.446-0.354   C12.14,2.259,12.07,2.249,12,2.249z"/>
+              <path d="M12.001,19.499c-0.044,0-0.088-0.004-0.13-0.011c-0.513-0.06-0.923-0.47-0.983-0.983c-0.008-0.043-0.012-0.087-0.012-0.131   s0.004-0.088,0.012-0.131c0.06-0.513,0.47-0.922,0.983-0.982c0.042-0.008,0.086-0.011,0.131-0.011s0.088,0.004,0.13,0.011   c0.513,0.06,0.923,0.47,0.983,0.983c0.008,0.042,0.011,0.086,0.011,0.131s-0.004,0.088-0.011,0.131   c-0.06,0.513-0.47,0.923-0.983,0.983C12.089,19.496,12.046,19.499,12.001,19.499z"/>
+              <path d="M12.001,15.749c-0.414,0-0.75-0.336-0.75-0.75v-6.75c0-0.414,0.336-0.75,0.75-0.75c0.413,0,0.75,0.336,0.75,0.75v6.75   C12.751,15.413,12.415,15.749,12.001,15.749z"/>
+            </g>
+          </svg>
+          You must add 1 or more seats
+        </div> -->
+      </div>
+    </div>
+
+    <form [formGroup]="form">
+      <div class="d-flex">
+        <div class="modal-inputs">
+          <label class="my-2">Seat to move item(s) to</label>
+          <input id="seat-number-input" formControlName="seatDestination" type="number" class='px-3' required>
+        </div>
+      </div>
+    </form>
+
+</div>
+  <div class="modal-footer">
+    <button class="btn" (click)="modal.dismiss()">Cancel</button>
+    <button class="btn primary" (click)="submitMoveItemForm()">Move Item(s)</button>
+  </div>
+</ng-template>
