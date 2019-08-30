@@ -50,9 +50,6 @@ export class ProductsListingComponent {
       this.seatService.addItemToSeat(this.openSeat, product);
       this.tableService.getTableItemQuantity(this.openTable);
       this.tableService.getTableSubTotal(this.openTable);
-    } else {
-      // this.tableService.createTable({number: 1, seats: 1})
-      // console.log('here');
     }
   }
   
