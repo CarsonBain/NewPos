@@ -29,7 +29,6 @@ export class ProductsListingComponent {
   ) {}
 
   public addProduct(product: Product): void {
-    console.log(this.products);
     this.openSeat = this.seatService.getOpenSeat();
     this.openTable = this.tableService.getOpenTable();
     if(this.openSeat) {
@@ -47,7 +46,7 @@ export class ProductsListingComponent {
       product = new Product(newProductOptions)
       // product.GUID = this.guidService.generateGUID();
       product.seatNumber = this.openSeat.number;
-      this.tempSeatItems.push(product);
+      this.addToTempItems(product);
       this.seatService.addItemToSeat(this.openSeat, product);
       this.tableService.getTableItemQuantity(this.openTable);
       this.tableService.getTableSubTotal(this.openTable);
@@ -55,6 +54,21 @@ export class ProductsListingComponent {
       // this.tableService.createTable({number: 1, seats: 1})
       // console.log('here');
     }
+  }
+  
+  public addToTempItems(product: Product): void{
+    const productName = product.name;
+    // this.tempSeatItems.forEach(item => {
+    //   if(!this.item)
+    // });
+    // if (!this.tempSeatItems[productName]){
+    //   this.tempSeatItems[productName] = {
+    //     name : productName,
+    //     count: 1
+    //   };
+    // } else {
+    //   this.tempSeatItems[productName].count ++
+    // }
   }
 
 }
