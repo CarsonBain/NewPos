@@ -24,17 +24,19 @@
     width: 100%;
     display: table;
   }
-  
 
-  
+.main-wrap {
+  width: 325px
+}
+
   .seat-item-container {
     width: 400px;
   }
-  
+
   .item-row {
     padding-left: 20px;
   }
-  
+
 }
 
 .heading {
@@ -52,10 +54,31 @@
 .seat-number {
   height: 30px;
   width: 30px;
-  line-height: 30px;
+  line-height: 32px;
   background-color: $blue-lighter;
   color: $blue;
   font-weight: 600;
+}
+
+.sidebar {
+  width: 130px;
+  flex: 1;
+  border: 1px solid #e1e1e1;
+  height: 130px;
+
+  .header {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    background-color: $blue;
+    color: white;
+    text-align: center;
+    height: 32px;
+    border-radius: 0;
+    line-height: 16px;
+  }
 }
 
 .item-name {
@@ -64,4 +87,24 @@
 
 .seat-info {
   font-size: 14px;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #000;
+  position: absolute;
+  right: -30px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 48px;
+}
+
+button.primary {
+  background-color: $pink;
+  color: #fff;
 }
