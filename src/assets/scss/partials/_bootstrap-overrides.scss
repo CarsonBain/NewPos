@@ -312,8 +312,9 @@ ngb-datepicker {
 
 .table-summary-container {
   .card {
-    height: 68px;
-
+    .main {
+      width: calc(100% - 30px);
+    }
     button.btn-link {
       width: 100%;
       border-bottom: 1px solid #e1e1e1;

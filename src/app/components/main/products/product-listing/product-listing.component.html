@@ -1,7 +1,13 @@
 
 <div class="products-container d-grid mt-4">
   <span *ngFor="let product of products">
-    <button (click)="addProduct(product)" [ngClass]="{'selected-product': product.selected}" class="m-1 d-flex align-items-center product w-100">
+    <button 
+    [ngClass]="{'product-happyHour': product.posCategory === 'Happy Hour'}" 
+    [ngClass]="{'product-wine': product.posCategory === 'Wine'}" 
+    [ngClass]="{'product-beer': product.posCategory === 'Beer'}" 
+    [ngClass]="{'product-beverage': product.posCategory === 'Beverage'}" 
+    [ngClass]="{'product-food': product.posCategory === 'Food'}" 
+    (click)="addProduct(product)" class="m-1 d-flex align-items-center product w-100">
       <div class="rounded-circle product-icon mr-2">
           <svg fill="#fff" height="42px" width="42px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Regular" x="0px" y="0px" viewBox="-9 -8 42 42" style="enable-background:new 0 0 24 24;" xml:space="preserve">
             <title>wine-glass</title>

@@ -1,6 +1,7 @@
 import { Seat } from '../seat/seat.model';
 
 export class Table {
+  id: string;
   number: number;
   serverId: number;
   seats: Seat[];

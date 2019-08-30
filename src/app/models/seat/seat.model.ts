@@ -7,6 +7,7 @@ export class Seat {
   tableNumber: number;
   GUID: string;
   selected: boolean;
+  readyForBill: boolean;
   billItems: Product[];
 
   constructor(args: Seat) {

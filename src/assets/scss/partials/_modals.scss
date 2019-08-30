@@ -87,6 +87,22 @@
   }
 }
 
+.extra-small {
+  .modal-dialog {
+    @include media-breakpoint-up(lg) {
+      margin: 10% auto;
+      max-width: 300px;
+      right: 33%
+    }
+  }
+
+  .modal-wrapper {
+    .modal-body {
+      min-height: 160px;
+    }
+  }
+}
+
 .modal-backdrop {
   color: white;
   background: $midnight;

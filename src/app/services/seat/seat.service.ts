@@ -29,6 +29,7 @@ export class SeatService {
       tableNumber: table.number,
       GUID: this.GuidService.generateGUID(),
       selected: false,
+      readyForBill: false,
       billItems: []
     };
     table.seats.push(newSeat);
@@ -42,6 +43,14 @@ export class SeatService {
     });
     this.correctSeatNumbers(table);
   }
+  
+  public removeItemFromSeat(product: Product, seat: Seat) {
+    seat.items.forEach((item, index) => {
+      if(product.GUID === item.GUID){
+        seat.items.splice(index, 1);
+      }
+    });
+  };
   
   public correctSeatNumbers(table: Table): void{
     table.seats.forEach((seat,index) => {

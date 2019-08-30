@@ -7,13 +7,13 @@
     height: 70px;
     background-color: white;
     border: none;
-    border-top: 4px solid #fcb425;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.08);
+    // border-top: 4px solid #fcb425;
 
     &:focus{
       outline: none;
     }
-
+    
     &.selected-product {
       background-color: pink;
     }
@@ -43,4 +43,25 @@
 
 .product-info {
   font-size: 14px;
+}
+
+.product-happyHour{
+  border-top: 4px solid #C3C8E9 !important;
+  // background-color: #C3C8E9 !important; 
+}
+.product-food{
+  border-top: 4px solid #FDD27C !important;
+  // background-color: blue !important;
+}
+.product-beer{
+  border-top: 4px solid #70C6F9 !important;
+  // background-color: blue !important;
+}
+.product-wine{
+  border-top: 4px solid #F3D6ED !important;
+  // background-color: blue !important;
+}
+.product-beverage{
+  border-top: 4px solid #6DD3A2 !important;
+  // background-color: blue !important;
 }

@@ -15,6 +15,7 @@ import { MainComponent } from './components/main/main.component';
 import { ProductsComponent } from './components/main/products/products.component';
 import { TextInputComponent } from './shared/text-input/text-input.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

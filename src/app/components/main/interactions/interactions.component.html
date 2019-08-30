@@ -2,7 +2,7 @@
   <div *ngIf="!serverTables.length" class="empty-state d-flex align-items-center justify-content-center flex-wrap position-absolute">
       <div class="rounded-circle"><svg class="table-icon" id="Bold" xmlns="http://www.w3.org/2000/svg" height="114px" width="114px" viewBox="-12 -12 48 48"><title>table-restaurant</title><path d="M8.5,13.75a2,2,0,0,0-2-2H3.2a.249.249,0,0,1-.249-.237c-.033-.633-.086-1.264-.175-1.889L1.99,4.108a1,1,0,0,0-1.98.283L.8,9.906a21.268,21.268,0,0,1-.317,7.568L.024,19.533a1,1,0,0,0,.759,1.193A1.018,1.018,0,0,0,1,20.75a1,1,0,0,0,.975-.783l.458-2.06a23.7,23.7,0,0,0,.527-3.92.25.25,0,0,1,.25-.237H6.25A.25.25,0,0,1,6.5,14v5.75a1,1,0,0,0,2,0Z"/><path d="M14.5,19.75a1,1,0,0,0-1-1,.5.5,0,0,1-.5-.5v-7.5a.5.5,0,0,1,.5-.5H18a1,1,0,0,0,0-2H6a1,1,0,0,0,0,2h4.5a.5.5,0,0,1,.5.5v7.5a.5.5,0,0,1-.5.5,1,1,0,0,0,0,2h3A1,1,0,0,0,14.5,19.75Z"/><path d="M23.519,17.474A21.254,21.254,0,0,1,23.2,9.907l.788-5.515a1,1,0,1,0-1.98-.283l-.788,5.515c-.089.625-.142,1.257-.175,1.89a.248.248,0,0,1-.249.236H17.5a2,2,0,0,0-2,2v6a1,1,0,0,0,2,0V14a.25.25,0,0,1,.25-.25h3.039a.249.249,0,0,1,.249.237,23.83,23.83,0,0,0,.528,3.921l.458,2.059A1,1,0,0,0,23,20.75a1.084,1.084,0,0,0,.218-.023,1,1,0,0,0,.759-1.193Z"/></svg></div>
     <div class="w-100 text-center mt-4">
-    <p class="mb-1">Welcome, Jolie!</p>
+    <p class="mb-1">Welcome, Jon!</p>
     <p>Add a table to get started!</p>
     </div>
   </div>
@@ -66,7 +66,7 @@
                       </div>
                       <svg xmlns="http://www.w3.org/2000/svg" class="chevron" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                     </div>
-                    <!-- <div class="p-2" *ngIf="seat.items.length === 0 && openSeat === seat" (click)="removeSeat(seat)">Remove</div> -->
+                    <div class="p-2 mt-2 remove" *ngIf="seat.items.length === 0 && openSeat === seat" (click)="removeSeat(seat)">Remove</div>
                     </div>
                   </ng-template>
                   <!-- <ng-template *ngIf="openSeatItems.length > 0" ngbPanelContent>
@@ -85,7 +85,7 @@
 
 <div class="interactions-footer d-flex justify-content-between">
 
-<button class="text-left btn text-white p-3 add" *ngIf="tableSelected" (click)="open(addTable)">Add Table <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="16px" width="16px" viewBox="-4 0 32 32"><title>add</title><path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"/></svg></button>
+<button class="text-left btn text-white p-3 add" (click)="open(addTable)">Add Table <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="16px" width="16px" viewBox="-4 0 32 32"><title>add</title><path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"/></svg></button>
 
 
 <ng-template #addTable let-modal class="p-2">
@@ -141,7 +141,7 @@
             <div class="d-flex">
               <div class="modal-inputs">
                 <label class="my-2">Table Number</label>
-                <input formControlName="newTableNumber" type="number" class='px-3' required>
+                <input id="table-number-input" formControlName="newTableNumber" type="number" class='px-3' required>
               </div>
               <div class="modal-inputs">
               <label class="my-2">Number of guests</label>

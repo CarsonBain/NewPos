@@ -34,7 +34,7 @@ export class InteractionsComponent implements OnInit {
   public form: FormGroup;
   public currentServer = 1;
   public displayAddTableModal = false;
-  public tableSelected = true;
+  // public tableSelected = true;
   public tableNumberError = false;
   public formSubmitted = false;
   public displayErrors = false;
@@ -69,11 +69,6 @@ export class InteractionsComponent implements OnInit {
 
   // TODO: Find some way of adding two in a row
   @Input() set productAdd(product: Product) {
-    // if (this.openSeat) {
-    //   this.seatService.addItemToSeat(this.openSeat, product);
-    //   this.tableService.getTableItemQuantity(this.openTable);
-    //   this.tableService.getTableSubTotal(this.openTable);
-    // }
   }
 
   public setCurrentItem(product: Product, seat: Seat): void{
@@ -92,9 +87,7 @@ export class InteractionsComponent implements OnInit {
   public setOpenSeat(seat: Seat): void{
     this.openSeat = this.seatService.setOpenSeat(seat);
     // this.openSeat = seat;
-    console.log(this.openSeat);
     this.openSeatItems = this.openSeat.items;
-    console.log(seat);
     // TODO: don't close other seats
     // Set a value on the seat Modal, open or no.
   }
@@ -114,23 +107,6 @@ export class InteractionsComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
   }
 
-  // public tableService.createTable(tableOptions): Table {
-  //   const table = {
-  //     number: tableOptions.number,
-  //     serverId: this.currentServer,
-  //     seats: tableOptions.seats,
-  //     billPrinted: false,
-  //     createdAt: new Date().toLocaleTimeString(),
-  //     lastItemOrdered: new Date().toLocaleTimeString(),
-  //     totalItems: 0,
-  //     subtotal: 0
-  //   };
-
-  //   this.tableService.createTable(table);
-
-  //   return table;
-  // }
-
   public buildTableOptions(): any {
     const seats = [];
 
@@ -142,6 +118,7 @@ export class InteractionsComponent implements OnInit {
         tableNumber: this.newTableNumber.value,
         GUID: this.guidService.generateGUID(),
         selected: false,
+        readyForBill: false,
         billItems: []
       };
       seats.push(seat);

@@ -302,7 +302,6 @@ export class ProductService {
   ];
 
   public getAll(category?): any {
-    console.log(category);
     if (category) {
       const filteredResults = [];
       this.products.forEach(product => {
