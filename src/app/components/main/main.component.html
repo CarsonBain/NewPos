@@ -2,10 +2,10 @@
   <div class="interactions-wrapper">
     <app-interactions (viewTableSummary)="toggleTableSummary()" (tableChange)="handleTableChange($event)" [productAdd]="selectedProduct"></app-interactions>
   </div>
-  <div class="position-absolute table-summary h-100" [ngClass]="{'open': viewTableSummary}">
-    <app-table-summary [openTable]="tableChange" *ngIf="viewTableSummary"></app-table-summary>
+  <div class="position-absolute table-summary h-100 highest" [ngClass]="{'open': viewTableSummary}">
+    <app-table-summary (itemsSent)="handleItemsSent($event)" [openTable]="tableChange" *ngIf="viewTableSummary"></app-table-summary>
   </div>
   <div class="products-wrapper">
-    <app-products [selectedSeat]="seatChange" [selectedTable]="tableChange" (addProductAction)="handleAddProduct($event)"></app-products>
+    <app-products [itemsSent]="itemsSent" [selectedSeat]="seatChange" [selectedTable]="tableChange" (addProductAction)="handleAddProduct($event)"></app-products>
   </div>
 </div>

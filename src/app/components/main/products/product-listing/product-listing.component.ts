@@ -56,19 +56,32 @@ export class ProductsListingComponent {
     }
   }
   
+  @Input() set sendItems(event){
+    this.tempSeatItems = [];
+  }
+  
   public addToTempItems(product: Product): void{
     const productName = product.name;
-    // this.tempSeatItems.forEach(item => {
-    //   if(!this.item)
-    // });
-    // if (!this.tempSeatItems[productName]){
-    //   this.tempSeatItems[productName] = {
-    //     name : productName,
-    //     count: 1
-    //   };
-    // } else {
-    //   this.tempSeatItems[productName].count ++
-    // }
+    let productFound = false;
+    this.tempSeatItems.forEach(item => {
+      if(item.name === productName){
+        productFound = true;
+      }
+    });
+    if (productFound){
+      this.tempSeatItems.forEach(item => {
+        if(item.name === productName){
+          item.count ++;
+        }
+      });
+    } else {
+      this.tempSeatItems.push({
+        name: productName,
+        count: 1
+      })
+    }
+    
+    this.tableService.captureTempItems(this.tempSeatItems);
   }
 
 }

@@ -68,7 +68,7 @@
       <button (click)="buildBill();" class="btn">Print Selected</button>
       <button class="btn">Take Payment</button>
     </div>
-    <button class="p-2 btn primary ml-auto">Send x new items</button>
+    <button *ngIf="tempItemCount > 0" class="p-2 btn primary ml-auto" (click)="sendTempItems($event)">Send {{tempItemCount}} new items</button>
   </div>
 
 </div>

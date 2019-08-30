@@ -30,7 +30,7 @@ export class SeatService {
       GUID: this.GuidService.generateGUID(),
       selected: false,
       readyForBill: false,
-      billItems: []
+      billItems: [],
     };
     table.seats.push(newSeat);
   }
