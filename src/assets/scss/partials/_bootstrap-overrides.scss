@@ -11,6 +11,8 @@
     //don't want to apply to 'collapse'
     .collapse {
       padding: 0;
+      max-height: 250px;
+      overflow: auto;
     }
 
     .row {
