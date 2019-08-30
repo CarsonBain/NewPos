@@ -27,7 +27,9 @@ export class SeatService {
       items: [],
       subtotal: 0.00,
       tableNumber: table.number,
-      GUID: this.GuidService.generateGUID()
+      GUID: this.GuidService.generateGUID(),
+      selected: false,
+      billItems: []
     };
     table.seats.push(newSeat);
   }

@@ -6,6 +6,8 @@ export class Seat {
   subtotal?: number;
   tableNumber: number;
   GUID: string;
+  selected: boolean;
+  billItems: Product[];
 
   constructor(args: Seat) {
     Object.assign(this, args);

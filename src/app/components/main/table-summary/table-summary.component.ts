@@ -33,40 +33,68 @@ export class TableSummaryComponent implements OnChanges, OnInit{
   }
   
   public buildBill(): void{
-    this.findSelectedSeats();
-    console.log('billSeats, ', this.billSeats);
-    this.tableSummaryTable.seats.forEach(seat => {
+    this.billSeats.forEach(seat => {
       seat.items.forEach(item => {
-        if ( this.billItems.indexOf(item) === -1){
-          item.quantity = 1;
-          this.billItems.push(item);
-        } else {
-          item.quantity ++;
-        }
+        if ( seat.billItems.indexOf(item) === -1){
+              item.quantity = 1;
+              seat.billItems.push(item);
+            } else {
+              item.quantity ++;
+            }
       });
-    });
-    
+    })
     this.printBill();
   }
   
-  public findSelectedSeats(){
-    const checkboxValues = this.form.controls.seatCheckboxes.value.value;
-    checkboxValues.forEach((checkbox,index) => {
-      if (checkbox === true){
-        this.tableSummaryTable.seats.forEach(seat => {
-          if (seat.number === index + 1){
-            this.billSeats.push(seat);
-          }
-        });
+  public markSeatAsSelected(seatToMarkActive){
+    this.tableSummaryTable.seats.forEach(seat => {
+      if (seatToMarkActive === seat) {
+        seat.selected = !seat.selected;
+        if(seat.selected === true){
+          this.billSeats.push(seat);
+        }
+        if(seat.selected === false){
+          this.billSeats.forEach((seat, index) => {
+            if(seatToMarkActive === seat){
+              this.billSeats.splice(index, 1)
+            }
+          });
+        }
       }
     });
+    
+    this.billSeats = this.billSeats.sort((t1, t2) => {
+      const name1 = t1.number;
+      const name2 = t2.number;
+      if (name1 > name2) { return 1; }
+      if (name1 < name2) { return -1; }
+      return 0;
+    });
   }
+  
+  // public findSelectedSeats(){
+  //   const checkboxValues = this.form.controls.seatCheckboxes.value.value;
+  //   checkboxValues.forEach((checkbox,index) => {
+  //     if (checkbox === true){
+  //       this.tableSummaryTable.seats.forEach(seat => {
+  //         if (seat.number === index + 1){
+  //           this.billSeats.push(seat);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
   
   public ngOnInit() {
     // this.form.get('seatCheckboxes').value.valueChanges.subscribe(newVal => console.log(newVal));
   }
   
+  public formSubmit(event) {
+    console.log(event)
+  }
+  
   public ngOnChanges(){
+    this.unmarkSelectedSeats();
     this.buildCheckboxArray();
     this.buildForm();
     // this.monitorCheckboxes();
@@ -102,6 +130,12 @@ export class TableSummaryComponent implements OnChanges, OnInit{
   //   });
   //   return this.formBuilder.array(arr);
   // }
+  
+  public unmarkSelectedSeats(){
+    this.tableSummaryTable.seats.forEach(seat => {
+      seat.selected = false;
+    });
+  }
 
 
   public printBill(): void{
@@ -110,6 +144,8 @@ export class TableSummaryComponent implements OnChanges, OnInit{
       const element = document.getElementById('receipt');
       html2pdf(element);
     }, 10);
+    
+    this.unmarkSelectedSeats();
   }
 
 }

@@ -140,7 +140,9 @@ export class InteractionsComponent implements OnInit {
         items: [],
         subtotal: 0.00,
         tableNumber: this.newTableNumber.value,
-        GUID: this.guidService.generateGUID()
+        GUID: this.guidService.generateGUID(),
+        selected: false,
+        billItems: []
       };
       seats.push(seat);
     }
